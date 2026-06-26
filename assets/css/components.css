@@ -65,9 +65,14 @@
 .site-header[data-scrolled="true"]::before { opacity: 1; }
 
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-.nav-logo { display: inline-flex; align-items: center; gap: .65rem; }
-.nav-logo img { height: 46px; width: auto; transform-origin: left center; transition: transform var(--dur-3) var(--ease-out); }
-.site-header[data-scrolled="true"] .nav-logo img { transform: scale(.83); }
+.nav-logo { display: inline-flex; align-items: center; gap: .6rem; transform-origin: left center; transition: transform var(--dur-3) var(--ease-out); }
+.site-header[data-scrolled="true"] .nav-logo { transform: scale(.9); }
+.nav-logo-mark { height: 44px; width: auto; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
+.nav-logo-name {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.3rem;
+  color: var(--on-dark); letter-spacing: -.02em; line-height: 1; white-space: nowrap;
+}
+@media (max-width: 420px) { .nav-logo-name { font-size: 1.1rem; } .nav-logo-mark { height: 40px; } }
 .nav-logo-text {
   font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
   color: var(--on-dark); letter-spacing: -.01em; line-height: 1;
@@ -135,6 +140,12 @@
     linear-gradient(180deg, rgba(30,16,11,.46) 0%, rgba(34,18,12,.14) 30%, rgba(34,18,12,.10) 46%, rgba(34,18,12,.56) 78%, rgba(26,14,9,.84) 100%);
 }
 .hero-inner { position: relative; z-index: 2; padding-block: clamp(2rem, 6vh, 6rem) clamp(3rem, 9vh, 7rem); color: var(--on-dark); }
+/* Logo grande del negocio en el hero — medallón claro para que el texto del logo se lea sobre la foto oscura */
+.hero-logo { display: inline-block; margin-block: 1rem .5rem; padding: 1rem 1.6rem;
+  background: color-mix(in oklch, var(--crema) 92%, white); border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg); }
+.hero-logo img { height: clamp(96px, 16vw, 150px); width: auto; }
+@media (max-width: 560px) { .hero-logo { padding: .8rem 1.2rem; } }
 .hero h1 { color: var(--on-dark); font-size: var(--step-5); max-width: 16ch; }
 .hero .lead { color: var(--on-dark-muted); max-width: 46ch; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-block-start: 2rem; }
