@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Página no encontrada (404) | Sara Kafetegia</title>
+<meta name="description" content="La página que buscas no existe. Vuelve al inicio o echa un vistazo a la carta de Sara Kafetegia, la cafetería de Bera (Navarra).">
+<meta name="robots" content="noindex, follow">
+<!-- 404 puede servirse desde cualquier URL: usamos rutas absolutas con / -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/brand/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#2b1710">
+
+<link rel="preload" href="/assets/fonts/bricolage-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/petrona-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/motion.css">
+
+<script defer src="/assets/js/vendor/gsap.min.js"></script>
+<script defer src="/assets/js/vendor/ScrollTrigger.min.js"></script>
+<script defer src="/assets/js/main.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" data-scrolled="true">
+  <div class="container nav">
+    <a class="nav-logo" href="/index.html" aria-label="Sara Kafetegia — inicio">
+      <img src="/assets/img/brand/logo-full-240.webp" width="240" height="218" alt="Logo de Sara Kafetegia: croissant y taza de café dibujados a mano" style="height:46px;width:auto">
+    </a>
+    <nav aria-label="Principal">
+      <ul class="nav-links" role="list">
+        <li><a class="nav-link" href="/index.html">Inicio</a></li>
+        <li><a class="nav-link" href="/carta.html">Carta</a></li>
+        <li><a class="nav-link" href="/sobre-nosotros.html">Sobre nosotros</a></li>
+        <li><a class="nav-link" href="/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="btn nav-cta magnetic" href="/contacto.html#como-llegar">
+      <svg width="20" height="20" aria-hidden="true"><use href="/assets/icons/sprite.svg#i-route"></use></svg>
+      Cómo llegar
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+      <svg aria-hidden="true"><use href="/assets/icons/sprite.svg#i-menu"></use></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobile-menu" data-open="false">
+  <button class="menu-close" aria-label="Cerrar menú"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#i-close"></use></svg></button>
+  <nav aria-label="Móvil">
+    <a href="/index.html">Inicio</a>
+    <a href="/carta.html">Carta</a>
+    <a href="/sobre-nosotros.html">Sobre nosotros</a>
+    <a href="/contacto.html">Contacto</a>
+    <a class="btn" href="/contacto.html#como-llegar" style="margin-top:1rem">Cómo llegar</a>
+  </nav>
+</div>
+
+<main id="main">
+<section class="error-page section-dark grain" aria-labelledby="err-h">
+  <div class="container error-inner">
+    <!-- Taza vacía / café derramado (SVG propio, sin emojis) -->
+    <svg class="error-cup" viewBox="0 0 220 170" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <!-- vapor ausente: la taza está vacía -->
+      <path class="error-drip" d="M88 36c0-9 8-11 8-20M110 36c0-9 8-11 8-20" opacity="0.5"/>
+      <!-- taza -->
+      <path d="M58 70h84v26a42 42 0 0 1-42 42h0a42 42 0 0 1-42-42V70Z"/>
+      <path d="M142 78h14a18 18 0 0 1 0 36h-6"/>
+      <!-- plato -->
+      <path d="M44 150h112"/>
+      <!-- gotas derramadas -->
+      <circle cx="168" cy="150" r="3" fill="currentColor" stroke="none"/>
+      <circle cx="182" cy="156" r="2" fill="currentColor" stroke="none"/>
+      <circle cx="158" cy="160" r="2" fill="currentColor" stroke="none"/>
+      <path d="M150 150c6 4 14 5 22 3" opacity="0.6"/>
+    </svg>
+    <p class="error-code">Error 404</p>
+    <h1 id="err-h">Esta taza está vacía</h1>
+    <p class="lead">La página que buscas no existe o se ha movido. Pero no te preocupes: la cafetera sigue caliente. Vuelve al inicio o echa un vistazo a la carta.</p>
+    <div class="hero-actions">
+      <a class="btn btn-lg btn-fill magnetic" href="/index.html">
+        <svg width="22" height="22" aria-hidden="true"><use href="/assets/icons/sprite.svg#i-cup"></use></svg>
+        Volver al inicio
+      </a>
+      <a class="btn btn-lg btn-ghost-light" href="/carta.html">
+        <svg width="22" height="22" aria-hidden="true"><use href="/assets/icons/sprite.svg#i-arrow"></use></svg>
+        Ver la carta
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer grain">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <img src="/assets/img/brand/logo-full-240.webp" width="240" height="218" loading="lazy" alt="Sara Kafetegia">
+        <p>Café recién hecho, desayunos, bollería y repostería en el corazón de Bera, valle del Bidasoa (Navarra).</p>
+        <div class="social-row" style="margin-top:1rem">
+          <a href="https://www.instagram.com/sarakafetegia" aria-label="Instagram de Sara Kafetegia" rel="noopener" target="_blank"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#i-instagram"></use></svg></a>
+          <a href="https://www.facebook.com/sarakafetegia" aria-label="Facebook de Sara Kafetegia" rel="noopener" target="_blank"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#i-facebook"></use></svg></a>
+          <a href="https://wa.me/34948625673" aria-label="WhatsApp de Sara Kafetegia" rel="noopener" target="_blank"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#i-whatsapp"></use></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <a href="/index.html">Inicio</a>
+        <a href="/carta.html">Carta</a>
+        <a href="/sobre-nosotros.html">Sobre nosotros</a>
+        <a href="/contacto.html">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h4>Horario</h4>
+        <p>Lun–Vie: 7:30–13:30</p>
+        <p>Lun–Vie: 17:00–20:30</p>
+        <p>Sáb–Dom: 8:00–14:00</p>
+        <p>Sáb–Dom: 17:00–20:30</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="https://www.google.com/maps/search/?api=1&query=Sara+Kafetegia+Bera+Navarra" rel="noopener" target="_blank">Iturlandeta Karrika, 6<br>31780 Bera, Navarra</a>
+        <a href="tel:+34948625673">948 62 56 73</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span data-year>2026</span> Sara Kafetegia · Bera (Navarra)</p>
+      <p>Diseñado por <a href="https://unaxaller.com" rel="noopener" target="_blank">unaxaller.com</a></p>
+      <p><a href="/legal/aviso-legal.html">Aviso legal</a> · <a href="/legal/privacidad.html">Privacidad</a> · <a href="/legal/cookies.html">Cookies</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

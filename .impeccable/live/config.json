@@ -1,0 +1,7 @@
+{
+  "framework": "multi-page-static",
+  "files": ["**/*.html"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}

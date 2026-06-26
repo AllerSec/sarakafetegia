@@ -1,0 +1,63 @@
+/* ============================================================
+   Sara Kafetegia — motion.css
+   Page loader · reveal defaults · page transitions · reduced-motion
+   Reveals ENHANCE already-visible defaults (no content gated on JS).
+   ============================================================ */
+
+/* ---------- First-visit page loader ---------- */
+.loader {
+  position: fixed; inset: 0; z-index: var(--z-loader);
+  background: var(--espresso-deep); color: var(--on-dark);
+  display: grid; place-items: center; gap: 1rem;
+}
+.loader[hidden] { display: none; }
+.loader-mark { width: clamp(120px, 28vw, 200px); height: auto; }
+.loader-mark path, .loader-mark circle, .loader-mark line {
+  stroke: var(--crema); stroke-width: 2; fill: none;
+  stroke-dasharray: var(--len, 1000); stroke-dashoffset: var(--len, 1000);
+}
+.loader-steam { color: var(--amber); opacity: .85; }
+.loader-text { font-family: var(--font-display); letter-spacing: .25em; font-size: .8rem; text-transform: uppercase; color: var(--on-dark-muted); }
+/* curtain wipe handled by GSAP; fallback fade below */
+.loader.is-done { animation: loaderOut var(--dur-4) var(--ease-out) forwards; }
+@keyframes loaderOut { to { opacity: 0; visibility: hidden; } }
+
+/* ---------- Reveal defaults (content visible by default) ----------
+   Elements are fully visible. JS adds [data-reveal] only when GSAP is
+   ready & motion allowed, then animates from the .pre state. If JS never
+   runs, content shows normally. */
+[data-reveal] { will-change: transform, opacity; }
+.js-motion [data-reveal].pre { opacity: 0; transform: translateY(28px); }
+.js-motion [data-reveal].pre.fade { transform: none; }
+
+/* ---------- Page transition overlay (barba-style curtain) ---------- */
+.page-curtain {
+  position: fixed; inset: 0; z-index: var(--z-loader);
+  background: var(--espresso); transform: scaleY(0); transform-origin: bottom;
+  pointer-events: none;
+}
+.page-transitioning .page-curtain { pointer-events: auto; }
+
+/* Hero text entrance — CSS-only (not JS-gated), so the LCP headline is always
+   present and just animates in. Safe if JS fails. */
+@keyframes heroRise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+.hero-rise { animation: heroRise var(--dur-4) var(--ease-out) both; animation-delay: var(--rise-delay, 0s); }
+
+/* Hero parallax layers */
+.hero-media { will-change: transform; }
+
+/* Magnetic button base */
+.magnetic { will-change: transform; }
+
+/* Count-up nums start at their final value (visible if JS off) */
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .js-motion [data-reveal].pre,
+  .js-motion [data-reveal].pre.fade { opacity: 1 !important; transform: none !important; }
+  .loader, .page-curtain { display: none !important; }
+  .hero-scroll .drop, .open-badge .dot { animation: none !important; }
+  .menu-card:hover .menu-card-media img,
+  .gallery figure:hover img { transform: none; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,52 @@
+# robots.txt — Sara Kafetegia (https://sarakafetegia.com)
+# Café de especialidad en Bera (Navarra)
+
+User-agent: *
+Allow: /
+Disallow: /_source/
+Disallow: /legal/
+
+# --- AI / LLM crawlers: explicitly welcome (queremos aparecer en respuestas de IA) ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Índice para agentes de IA (convención llmstxt.org)
+# LLMs: ver /llms.txt y /llms-full.txt
+
+Sitemap: https://sarakafetegia.com/sitemap.xml

@@ -1,0 +1,14 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Dev
+node_modules/
+.cache/
+
+# Impeccable live-mode runtime (no es contenido del sitio)
+.impeccable/live/runtime/
+
+# Nota: _source/ (imágenes originales) SÍ se versiona: es la fuente de
+# verdad de los assets. No se sirve en producción pero se conserva en git.
