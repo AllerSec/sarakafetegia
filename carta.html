@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -33,8 +33,9 @@
 
 <!-- Favicons -->
 <link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/img/brand/favicon-48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/brand/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/brand/favicon-512.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#2b1710">
@@ -42,7 +43,7 @@
 <!-- Fonts (self-hosted) -->
 <link rel="preload" href="assets/fonts/bricolage-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/petrona-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/photos/interior-wide-1600.webp" as="image" fetchpriority="high">
+<link rel="preload" href="assets/img/real/interior-sala-mesas-madera-sillas-cuero-mural-forestal-luz-natural.jpg" as="image" fetchpriority="high">
 
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
@@ -139,6 +140,74 @@
   ]
 }
 </script>
+<style>
+/* ── Lo que ofrecemos: layout split editorial ── */
+.oferta-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding-block: clamp(3rem, 6vw, 5rem);
+  border-bottom: 1px solid var(--stroke-subtle, oklch(85% 0.01 60 / .4));
+}
+.oferta-split:last-of-type { border-bottom: none; }
+.oferta-split--reverse .oferta-media { order: 2; }
+.oferta-split--reverse .oferta-content { order: 1; }
+
+.oferta-media {
+  border-radius: var(--radius-lg, 1.25rem);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.oferta-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.18) contrast(1.06) brightness(1.03);
+  transition: transform .5s ease;
+}
+.oferta-media:hover img { transform: scale(1.03); }
+
+.oferta-content { max-width: 38rem; }
+.oferta-content h3 { margin-block: .5rem 1rem; }
+
+.oferta-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+.oferta-list li {
+  padding: .55rem 0;
+  border-bottom: 1px solid var(--stroke-subtle, oklch(85% 0.01 60 / .3));
+  font-size: .95rem;
+  line-height: 1.4;
+  color: var(--ink-base);
+}
+.oferta-list li:last-child { border-bottom: none; }
+.oferta-list strong { color: var(--ink-strong, var(--ink-base)); }
+
+.oferta-nota {
+  font-size: .85rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+@media (max-width: 820px) {
+  .oferta-split {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-block: clamp(2rem, 5vw, 3rem);
+  }
+  .oferta-split--reverse .oferta-media { order: 0; }
+  .oferta-split--reverse .oferta-content { order: 1; }
+  .oferta-media { aspect-ratio: 4/3; }
+}
+</style>
 </head>
 <body>
 
@@ -162,7 +231,7 @@
 <header class="site-header" data-scrolled="false">
   <div class="container nav">
     <a class="nav-logo" href="index.html" aria-label="Sara Kafetegia — inicio">
-      <img class="nav-logo-mark" src="assets/img/brand/mark-120.webp" width="120" height="120" alt="" decoding="async">
+      <img class="nav-logo-mark" src="assets/img/brand/logo-mark-400.webp" srcset="assets/img/brand/logo-mark-400.webp 1x, assets/img/brand/logo-mark-800.webp 2x" width="400" height="400" alt="" decoding="async">
       <span class="nav-logo-name">Sara Kafetegia</span>
     </a>
     <nav aria-label="Principal">
@@ -200,18 +269,17 @@
 <!-- ============ HERO (compact, foto interior REAL) ============ -->
 <section class="hero hero-compact" aria-label="Carta">
   <div class="hero-media">
-    <img src="assets/img/photos/interior-wide-1600.webp"
-         srcset="assets/img/photos/interior-wide-640.webp 640w, assets/img/photos/interior-wide-1024.webp 1024w, assets/img/photos/interior-wide-1600.webp 1600w"
-         sizes="100vw" width="1600" height="900" fetchpriority="high" decoding="async"
-         alt="Interior de Sara Kafetegia con luz cálida, plantas y láminas de café en la pared">
+    <img src="assets/img/real/interior-sala-mesas-madera-sillas-cuero-mural-forestal-luz-natural.jpg"
+         width="1600" height="900" fetchpriority="high" decoding="async"
+         alt="Interior de Sara Kafetegia con mesas de madera, sillas de cuero y mural forestal con luz natural">
     <span class="hero-glow" aria-hidden="true"></span>
   </div>
   <div class="container hero-inner">
     <span class="open-badge" data-open="true" data-open-text="Abierto ahora" data-closed-text="Cerrado ahora">
       <span class="dot" aria-hidden="true"></span><span class="open-label">Abierto ahora</span>
     </span>
-    <h1 class="hero-rise">Nuestra carta</h1>
-    <p class="lead hero-rise" style="--rise-delay:.08s">Café recién hecho, desayunos de los de verdad y bollería del día. Todo con su precio, sin sorpresas y con opciones con leche vegetal, veganas y sin gluten.</p>
+    <h1 class="hero-rise">La carta de Sara Kafetegia</h1>
+    <p class="lead hero-rise" style="--rise-delay:.08s">Café con arte, bollería recién horneada, pintxos en vitrina y vinos para la tarde. Todo lo que apetece, a cualquier hora.</p>
   </div>
 </section>
 
@@ -229,177 +297,109 @@
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow"><svg width="18" height="18" aria-hidden="true"><use href="assets/icons/sprite.svg#i-cup"></use></svg>De la barra a tu mesa</span>
-      <h2 id="carta-h">Elige por lo que te apetezca hoy</h2>
-      <p>Filtra por categoría o desplázate para verlo todo. Si dudas, pregunta en barra: te ayudamos a elegir.</p>
+      <h2 id="carta-h">Lo que encontrarás aquí</h2>
+      <p>Café de verdad, bollería recién horneada, bocadillos de vitrina y bebidas para la terraza. Si dudas, pregunta en barra.</p>
     </div>
 
-    <div class="filterbar" role="group" aria-label="Filtrar carta por categoría">
-      <button class="filter-btn" data-filter="all" aria-pressed="true">Todo</button>
-      <button class="filter-btn" data-filter="cafe" aria-pressed="false">Café</button>
-      <button class="filter-btn" data-filter="desayunos" aria-pressed="false">Desayunos</button>
-      <button class="filter-btn" data-filter="dulce" aria-pressed="false">Bollería y dulce</button>
-      <button class="filter-btn" data-filter="salado" aria-pressed="false">Salado</button>
-      <button class="filter-btn" data-filter="bebidas" aria-pressed="false">Bebidas</button>
+    <!-- CAFÉ -->
+    <div class="oferta-split" data-reveal>
+      <div class="oferta-media">
+        <img src="assets/img/real/cappuccino-latte-art-corazon-cacao-croissant-dorado-plato-floral-libro-abierto.jpg"
+             width="1200" height="1600" loading="lazy"
+             sizes="(max-width: 820px) 92vw, 46vw"
+             alt="Capuchino con latte art de corazón y cacao junto a croissant dorado en plato floral y libro abierto">
+      </div>
+      <div class="oferta-content stack">
+        <span class="eyebrow">01 — Café</span>
+        <h3>El café que merecías</h3>
+        <p>Recién molido, bien extraído, servido como debe ser. Con leche de avena, soja o almendra sin coste extra.</p>
+        <ul class="oferta-list">
+          <li><strong>Espresso</strong> — Corto, intenso, recién molido</li>
+          <li><strong>Cortado</strong> — Con un toque de leche</li>
+          <li><strong>Café con leche</strong> — El clásico, con leche bien texturizada</li>
+          <li><strong>Capuchino</strong> — Con latte art de corazón y cacao</li>
+          <li><strong>Café con hielo</strong> — Para los días de calor en la terraza</li>
+          <li><strong>Descafeinado</strong> — De máquina, no de sobre</li>
+          <li><strong>Leche vegetal</strong> — Disponible sin coste extra</li>
+        </ul>
+        <p class="oferta-nota">Pregunta en barra por los cafés especiales del día.</p>
+      </div>
     </div>
 
-    <div class="menu-grid" data-reveal="stagger">
-
-      <!-- ===== CAFÉ (6) ===== -->
-      <article class="menu-card" data-cat="cafe">
-        <div class="menu-card-media"><img src="assets/img/menu/espresso-pour-640.webp" width="640" height="480" loading="lazy" alt="Espresso recién hecho cayendo en una taza pequeña"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Espresso</h3><span class="price">1,30 €</span></div>
-          <p>Café recién hecho, corto e intenso. El punto de partida de toda buena pausa.</p>
-          <div class="tags"><span class="tag">Café</span><span class="tag">Favorito</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="cafe">
-        <div class="menu-card-media"><img src="assets/img/menu/coffee-cup-table-640.webp" width="640" height="480" loading="lazy" alt="Cortado en taza de cristal sobre la mesa"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Cortado</h3><span class="price">1,40 €</span></div>
-          <p>Espresso con un toque de leche. Para quien quiere café de verdad sin que llene.</p>
-          <div class="tags"><span class="tag">Café</span><span class="tag" data-kind="veg">Opción vegetal</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="cafe">
-        <div class="menu-card-media"><img src="assets/img/menu/flat-white-640.webp" width="640" height="480" loading="lazy" alt="Café con leche con arte de barista en taza de cerámica"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Café con leche</h3><span class="price">1,70 €</span></div>
-          <p>El clásico de toda la vida, con leche bien texturizada. También con leche vegetal.</p>
-          <div class="tags"><span class="tag">Café</span><span class="tag" data-kind="veg">Opción vegetal</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="cafe">
-        <div class="menu-card-media"><img src="assets/img/menu/cappuccino-top-640.webp" width="640" height="480" loading="lazy" alt="Capuchino visto desde arriba con espuma cremosa"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Capuchino</h3><span class="price">1,90 €</span></div>
-          <p>Espresso, leche bien texturizada y un dedo de espuma. Cremoso y reconfortante.</p>
-          <div class="tags"><span class="tag">Café</span><span class="tag" data-kind="veg">Opción vegetal</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="cafe">
-        <div class="menu-card-media"><img src="assets/img/menu/latte-art-640.webp" width="640" height="480" loading="lazy" alt="Café con hielo servido en vaso alto"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Café con hielo</h3><span class="price">1,60 €</span></div>
-          <p>Café recién hecho servido con hielo. El alivio perfecto para los días de calor.</p>
-          <div class="tags"><span class="tag">Café</span><span class="tag">De temporada</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="cafe">
-        <div class="menu-card-media"><img src="assets/img/menu/pour-over-640.webp" width="640" height="480" loading="lazy" alt="Café descafeinado recién servido en una taza"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Descafeinado</h3><span class="price">1,50 €</span></div>
-          <p>El mismo café, sin cafeína. De máquina, no de sobre, para que sepa como debe.</p>
-          <div class="tags"><span class="tag">Café</span><span class="tag" data-kind="veg">Opción vegetal</span></div>
-        </div>
-      </article>
-
-      <!-- ===== DESAYUNOS (3) ===== -->
-      <article class="menu-card" data-cat="desayunos">
-        <div class="menu-card-media"><img src="assets/img/menu/breakfast-spread-640.webp" width="640" height="480" loading="lazy" alt="Desayuno completo con café, zumo y tostada sobre mesa de madera"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Desayuno Bidasoa</h3><span class="price">4,90 €</span></div>
-          <p>Café, zumo natural y tostada de pan con tomate, aceite o mermelada. El desayuno completo.</p>
-          <div class="tags"><span class="tag">Desayuno</span><span class="tag" data-kind="veg">Vegano</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="desayunos">
-        <div class="menu-card-media"><img src="assets/img/menu/coffee-cup-table-1024.webp" width="640" height="480" loading="lazy" alt="Café con una tostada con tomate y aceite recién hecha"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Tostada con tomate y aceite</h3><span class="price">2,20 €</span></div>
-          <p>Pan tostado con tomate rallado y un buen chorro de aceite de oliva virgen.</p>
-          <div class="tags"><span class="tag">Desayuno</span><span class="tag" data-kind="veg">Vegano</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="desayunos">
-        <div class="menu-card-media"><img src="assets/img/menu/croissant-1024.webp" width="640" height="480" loading="lazy" alt="Café con leche acompañado de un croissant de mantequilla"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Café con croissant</h3><span class="price">2,90 €</span></div>
-          <p>Café con leche y croissant de mantequilla recién hecho. El desayuno rápido de siempre.</p>
-          <div class="tags"><span class="tag">Desayuno</span><span class="tag">Recién hecho</span></div>
-        </div>
-      </article>
-
-      <!-- ===== BOLLERÍA Y DULCE (3) ===== -->
-      <article class="menu-card" data-cat="dulce">
-        <div class="menu-card-media"><img src="assets/img/menu/croissant-640.webp" width="640" height="480" loading="lazy" alt="Croissant de mantequilla dorado recién horneado"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Croissant de mantequilla</h3><span class="price">1,60 €</span></div>
-          <p>Crujiente por fuera y tierno por dentro. El compañero perfecto del café de la mañana.</p>
-          <div class="tags"><span class="tag">Bollería</span><span class="tag">Recién hecho</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="dulce">
-        <div class="menu-card-media"><img src="assets/img/menu/pastries-tray-640.webp" width="640" height="480" loading="lazy" alt="Napolitana de chocolate recién horneada en bandeja"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Napolitana de chocolate</h3><span class="price">1,70 €</span></div>
-          <p>Hojaldre relleno de chocolate, recién horneado. Para los que no se conforman con poco.</p>
-          <div class="tags"><span class="tag">Bollería</span><span class="tag">Recién hecho</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="dulce">
-        <div class="menu-card-media"><img src="assets/img/menu/cake-slice-640.webp" width="640" height="480" loading="lazy" alt="Porción de tarta casera del día en un plato"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Tarta del día</h3><span class="price">3,20 €</span></div>
-          <p>Tarta casera que cambia según la temporada: zanahoria, queso, manzana… pregunta por la de hoy.</p>
-          <div class="tags"><span class="tag">Dulce</span><span class="tag">De temporada</span></div>
-        </div>
-      </article>
-
-      <!-- ===== SALADO (3) ===== -->
-      <article class="menu-card" data-cat="salado">
-        <div class="menu-card-media"><img src="assets/img/menu/breakfast-spread-1024.webp" width="640" height="480" loading="lazy" alt="Tostada de aguacate con semillas sobre pan tostado"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Tostada de aguacate</h3><span class="price">4,50 €</span></div>
-          <p>Pan con aguacate, semillas y un toque de lima. Sencilla, fresca y saciante.</p>
-          <div class="tags"><span class="tag">Salado</span><span class="tag" data-kind="veg">Vegano</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="salado">
-        <div class="menu-card-media"><img src="assets/img/menu/coffee-cup-table-640.webp" width="640" height="480" loading="lazy" alt="Sándwich mixto tostado acompañado de café"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Sándwich mixto</h3><span class="price">3,50 €</span></div>
-          <p>Jamón y queso en pan tostado, sencillo y rico. El clásico que nunca falla a media mañana.</p>
-          <div class="tags"><span class="tag">Salado</span><span class="tag">Recién hecho</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="salado">
-        <div class="menu-card-media"><img src="assets/img/menu/pastries-tray-1024.webp" width="640" height="480" loading="lazy" alt="Pincho de tortilla de patata casera en un plato"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Pincho de tortilla</h3><span class="price">2,20 €</span></div>
-          <p>Tortilla de patata casera, jugosa por dentro. El pincho de siempre para acompañar el café.</p>
-          <div class="tags"><span class="tag">Salado</span><span class="tag">Casero</span></div>
-        </div>
-      </article>
-
-      <!-- ===== BEBIDAS (3) ===== -->
-      <article class="menu-card" data-cat="bebidas">
-        <div class="menu-card-media"><img src="assets/img/menu/latte-art-1024.webp" width="640" height="480" loading="lazy" alt="Taza de chocolate caliente espeso con espuma"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Chocolate caliente</h3><span class="price">2,40 €</span></div>
-          <p>Chocolate espeso, para los días de frío de la montaña. Se puede pedir con leche vegetal.</p>
-          <div class="tags"><span class="tag">Bebida</span><span class="tag" data-kind="veg">Opción vegetal</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="bebidas">
-        <div class="menu-card-media"><img src="assets/img/menu/tea-pot-640.webp" width="640" height="480" loading="lazy" alt="Tetera sirviendo té en una taza"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Té e infusiones</h3><span class="price">1,80 €</span></div>
-          <p>Selección de tés en hoja e infusiones de la casa. Manzanilla, menta, rooibos y más.</p>
-          <div class="tags"><span class="tag">Bebida</span><span class="tag" data-kind="veg">Vegano</span></div>
-        </div>
-      </article>
-      <article class="menu-card" data-cat="bebidas">
-        <div class="menu-card-media"><img src="assets/img/menu/tea-pot-1024.webp" width="640" height="480" loading="lazy" alt="Zumo natural de fruta de temporada recién exprimido"></div>
-        <div class="menu-card-body">
-          <div class="menu-card-top"><h3>Zumo natural</h3><span class="price">2,50 €</span></div>
-          <p>Fruta de temporada exprimida al momento. Naranja, manzana o lo que traiga la huerta.</p>
-          <div class="tags"><span class="tag">Bebida</span><span class="tag" data-kind="veg">Vegano</span></div>
-        </div>
-      </article>
-
+    <!-- DESAYUNOS Y BOLLERÍA -->
+    <div class="oferta-split oferta-split--reverse" data-reveal>
+      <div class="oferta-media">
+        <img src="assets/img/real/bolleria-surtida-cenital-croissant-napolitana-donut-limon-palmera-bollo-nata-platos-florales.jpg"
+             width="1378" height="1600" loading="lazy"
+             sizes="(max-width: 820px) 92vw, 46vw"
+             alt="Bollería surtida de Sara Kafetegia vista cenital: croissants, napolitana de chocolate, donut glaseado, palmera y bollo de nata en platos florales">
+      </div>
+      <div class="oferta-content stack">
+        <span class="eyebrow">02 — Desayunos y bollería</span>
+        <h3>Para empezar el día</h3>
+        <p>Pan artesano que llega fresco cada mañana, bollería recién horneada y la tarta que haya ese día. Cambia a diario.</p>
+        <ul class="oferta-list">
+          <li><strong>Desayuno Bidasoa</strong> — Café + zumo + tostada con tomate y aceite</li>
+          <li><strong>Tostada con tomate y aceite</strong> — Pan artesano cada mañana</li>
+          <li><strong>Café con croissant</strong> — El desayuno rápido de siempre</li>
+          <li><strong>Croissants de mantequilla</strong> — Recién horneados</li>
+          <li><strong>Napolitanas de chocolate</strong> — Crujientes y doradas</li>
+          <li><strong>Bollería del día</strong> — Donuts, palmeras, bollos de nata… cambia cada mañana</li>
+          <li><strong>Tarta del día</strong> — Casera, pregunta cuál hay</li>
+        </ul>
+        <p class="oferta-nota">Para encargos de tarta o bandeja para grupo, llámanos con un día de antelación.</p>
+      </div>
     </div>
-    <p class="center-text" style="margin-top:2rem;color:var(--ink-muted)">Precios orientativos con IVA incluido. La carta puede variar según la temporada y lo recién hecho del día.</p>
+
+    <!-- SALADO -->
+    <div class="oferta-split" data-reveal>
+      <div class="oferta-media">
+        <img src="assets/img/real/barra-vitrina-pintxos-tortilla-bocadillos-croissant-bolleria-variada.jpg"
+             width="1536" height="2048" loading="lazy"
+             sizes="(max-width: 820px) 92vw, 46vw"
+             alt="Barra de Sara Kafetegia con vitrina de bocadillos de jamón, tortilla española, croissants y bollería del día">
+      </div>
+      <div class="oferta-content stack">
+        <span class="eyebrow">03 — Salado</span>
+        <h3>De la vitrina, hecho en casa</h3>
+        <p>Bocadillos y pintxos preparados aquí, sin envasar. Lo que haya en vitrina ese día, elige en barra.</p>
+        <ul class="oferta-list">
+          <li><strong>Bocadillo de tortilla española</strong> — El pintxo de siempre</li>
+          <li><strong>Bocadillo de jamón</strong> — En barra, elige el tuyo</li>
+          <li><strong>Bocadillos variados</strong> — Según vitrina del día</li>
+          <li><strong>Todo hecho en casa</strong> — Sin envasar</li>
+        </ul>
+        <p class="oferta-nota">La vitrina cambia cada día. Pásate y mira qué hay.</p>
+      </div>
+    </div>
+
+    <!-- APERITIVO Y BEBIDAS -->
+    <div class="oferta-split oferta-split--reverse" data-reveal>
+      <div class="oferta-media">
+        <img src="assets/img/real/mesa-brindis-vino-rosado-agua-pellegrino-bocadillo-tortilla-sala-interior.jpg"
+             width="1200" height="1600" loading="lazy"
+             sizes="(max-width: 820px) 92vw, 46vw"
+             alt="Brindis con vino rosado y agua con gas San Pellegrino junto a bocadillo de tortilla en sala de Sara Kafetegia, mural de bosque al fondo">
+      </div>
+      <div class="oferta-content stack">
+        <span class="eyebrow">04 — Aperitivo y terraza</span>
+        <h3>Para la tarde junto al río</h3>
+        <p>Vino rosado, cerveza fría, infusiones o el zumo del día. Para quedarse en terraza con vistas al Bidasoa.</p>
+        <ul class="oferta-list">
+          <li><strong>Vino rosado</strong> — Con San Pellegrino, la combinación perfecta</li>
+          <li><strong>Cerveza Amstel</strong> — Bien fría en terraza</li>
+          <li><strong>Agua con gas</strong> — San Pellegrino</li>
+          <li><strong>Vermut</strong> — Para la tarde junto al río</li>
+          <li><strong>Zumo natural</strong> — Exprimido al momento</li>
+          <li><strong>Tés e infusiones</strong> — Manzanilla, menta, rooibos…</li>
+          <li><strong>Chocolate caliente</strong> — Para los días de frío de montaña</li>
+          <li><strong>Todo disponible para llevar</strong></li>
+        </ul>
+        <p class="oferta-nota">La terraza abre cuando el tiempo acompaña.</p>
+      </div>
+    </div>
+
+    <p class="center-text" style="margin-top:3rem;color:var(--ink-muted)">La carta puede variar según lo recién hecho del día. Pregunta en barra.</p>
   </div>
 </section>
 
@@ -413,15 +413,15 @@
     </div>
     <div class="moments" data-reveal="stagger">
       <article class="moment">
-        <div class="moment-media"><img src="assets/img/menu/croissant-640.webp" width="640" height="480" loading="lazy" alt="Croissants de mantequilla recién horneados"></div>
+        <div class="moment-media"><img src="assets/img/real/bolleria-surtida-cenital-croissant-napolitana-donut-limon-palmera-bollo-nata-platos-florales.jpg" width="480" height="640" loading="lazy" alt="Bollería surtida de Sara Kafetegia vista cenital: croissants, napolitana, donut de limón glaseado, palmera de chocolate y bollo de nata en platos florales"></div>
         <div class="moment-body">
           <span class="moment-time">Cada mañana</span>
           <h3>Croissants y bollería</h3>
-          <p>Croissants, napolitanas y caracolas para empezar el día. Lo mejor, recién hechos a primera hora.</p>
+          <p>Croissants, napolitanas, donuts glaseados, palmeras y bollos de nata para empezar el día. Lo mejor, recién hechos a primera hora.</p>
         </div>
       </article>
       <article class="moment">
-        <div class="moment-media"><img src="assets/img/menu/pastries-tray-640.webp" width="640" height="480" loading="lazy" alt="Bandeja de repostería casera variada"></div>
+        <div class="moment-media"><img src="assets/img/real/cappuccino-latte-art-corazon-cacao-croissant-dorado-plato-floral-libro-abierto.jpg" width="480" height="640" loading="lazy" alt="Cappuccino con arte barista de corazón y cacao junto a croissant dorado en plato de flores"></div>
         <div class="moment-body">
           <span class="moment-time">Para merendar</span>
           <h3>Dulces de la casa</h3>
@@ -429,7 +429,7 @@
         </div>
       </article>
       <article class="moment">
-        <div class="moment-media"><img src="assets/img/menu/cake-slice-640.webp" width="640" height="480" loading="lazy" alt="Porción de tarta casera del día"></div>
+        <div class="moment-media"><img src="assets/img/real/barra-vitrina-pintxos-tortilla-bocadillos-croissant-bolleria-variada.jpg" width="480" height="640" loading="lazy" alt="Vitrina de bollería y pintxos de Sara Kafetegia con opciones para todos los gustos y momentos del día"></div>
         <div class="moment-body">
           <span class="moment-time">Tarta del día</span>
           <h3>Tartas caseras</h3>
@@ -445,16 +445,15 @@
   <div class="container">
     <div class="split">
       <div class="split-media" data-reveal>
-        <img src="assets/img/photos/coffee-hands-warm-1024.webp"
-             srcset="assets/img/photos/coffee-hands-warm-640.webp 640w, assets/img/photos/coffee-hands-warm-1024.webp 1024w"
-             sizes="(max-width: 820px) 92vw, 46vw"
+        <img src="assets/img/real/interior-barista-cliente-mesa-cafe-croissant-libro-abierto-sala-con-mural.jpg"
              width="1024" height="768" loading="lazy"
-             alt="Manos sosteniendo un café para llevar caliente">
+             alt="Ambiente tranquilo de Sara Kafetegia con cliente tomando café y croissant junto a un libro en sala con mural bosque">
       </div>
       <div class="stack" data-reveal="stagger">
         <span class="eyebrow"><svg width="18" height="18" aria-hidden="true"><use href="assets/icons/sprite.svg#i-cup"></use></svg>Para llevar</span>
         <h2 id="takeaway-h">Tu café, contigo donde vayas</h2>
         <p>Preparamos cualquier café y desayuno de la carta para llevar, durante todo el horario. Sin coste extra y listo en un momento.</p>
+        <p>También para la tarde: bocadillos, pintxos y algo para beber mientras. Pídelo aquí o para llevar.</p>
         <p>Es el favorito de quien madruga para subir al monte Larun, de los que cruzan a Francia y de quien va con prisa al trabajo. Pídelo en barra y sigue tu camino.</p>
         <a class="btn btn-outline" href="contacto.html#como-llegar">Dónde estamos
           <svg width="20" height="20" aria-hidden="true"><use href="assets/icons/sprite.svg#i-route"></use></svg>
@@ -469,11 +468,9 @@
   <div class="container">
     <div class="split reverse">
       <div class="split-media" data-reveal>
-        <img src="assets/img/photos/beans-scoop-1024.webp"
-             srcset="assets/img/photos/beans-scoop-640.webp 640w, assets/img/photos/beans-scoop-1024.webp 1024w"
-             sizes="(max-width: 820px) 92vw, 46vw"
+        <img src="assets/img/real/estanteria-decoracion-cuadros-mocay-granos-cafe-plantas-tropicales-bombillas-edison.jpg"
              width="1024" height="768" loading="lazy"
-             alt="Cuchara de madera con granos de café junto a un saco de arpillera">
+             alt="Estantería de Sara Kafetegia con cuadros de café Mocay, granos de café, plantas tropicales y bombillas Edison, ambiente acogedor">
       </div>
       <div class="stack" data-reveal="stagger">
         <span class="eyebrow"><svg width="18" height="18" aria-hidden="true"><use href="assets/icons/sprite.svg#i-leaf"></use></svg>Para todos</span>
@@ -497,8 +494,8 @@
     </div>
     <div class="faq" data-reveal="stagger">
       <details>
-        <summary>¿Los precios incluyen IVA? <svg class="chev" width="22" height="22" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron"></use></svg></summary>
-        <div class="faq-body"><p>Sí. Todos los precios están indicados por unidad e incluyen IVA. Algunos productos, como la tarta del día o el zumo natural, cambian según la temporada, pero los precios se mantienen orientativos.</p></div>
+        <summary>¿Qué hay en la vitrina cada día? <svg class="chev" width="22" height="22" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron"></use></svg></summary>
+        <div class="faq-body"><p>La vitrina cambia cada día según lo recién hecho: croissants, napolitanas de chocolate, donuts glaseados, palmeras, bollos de nata, bocadillos de tortilla, jamón, queso… Lo mejor es pasarse y ver qué hay. Si tienes alguna preferencia, llámanos antes.</p></div>
       </details>
       <details>
         <summary>¿Se puede pedir café para llevar? <svg class="chev" width="22" height="22" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron"></use></svg></summary>
@@ -589,3 +586,4 @@
 
 </body>
 </html>
+

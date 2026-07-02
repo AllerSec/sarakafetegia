@@ -67,12 +67,12 @@
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 .nav-logo { display: inline-flex; align-items: center; gap: .6rem; transform-origin: left center; transition: transform var(--dur-3) var(--ease-out); }
 .site-header[data-scrolled="true"] .nav-logo { transform: scale(.9); }
-.nav-logo-mark { height: 44px; width: auto; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
+.nav-logo-mark { height: 60px; width: auto; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
 .nav-logo-name {
   font-family: var(--font-display); font-weight: 700; font-size: 1.3rem;
   color: var(--on-dark); letter-spacing: -.02em; line-height: 1; white-space: nowrap;
 }
-@media (max-width: 420px) { .nav-logo-name { font-size: 1.1rem; } .nav-logo-mark { height: 40px; } }
+@media (max-width: 420px) { .nav-logo-name { font-size: 1.1rem; } .nav-logo-mark { height: 52px; } }
 .nav-logo-text {
   font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
   color: var(--on-dark); letter-spacing: -.01em; line-height: 1;
@@ -408,3 +408,28 @@
 .review .stars .star-empty { color: var(--line); }
 .review blockquote { margin: 0; font-family: var(--font-body); font-style: italic; font-size: var(--step-0); color: var(--ink); line-height: 1.55; }
 .review figcaption { font-family: var(--font-display); font-weight: 600; font-size: .92rem; color: var(--espresso-soft); }
+
+/* ---------- Vivacidad global en fotos reales ---------- */
+/* Aplicado a todas las imágenes de contenido (no logos, no iconos) */
+.hero-media img,
+.split-media img,
+.menu-card-media img,
+.gallery img,
+.gallery-bento figure img,
+.moment-media img,
+.ambiente-grid img,
+.terraza-hero-photos img,
+.terraza-hero-media img,
+.map-cover img {
+  filter: saturate(1.18) contrast(1.06) brightness(1.03);
+  transition: transform var(--dur-4) var(--ease-out), filter var(--dur-3) var(--ease-out);
+}
+
+/* En hover se intensifica levemente */
+.menu-card:hover .menu-card-media img,
+.gallery figure:hover img,
+.gallery-bento figure:hover img,
+.moment:hover .moment-media img,
+.split-media:hover img {
+  filter: saturate(1.28) contrast(1.08) brightness(1.05);
+}

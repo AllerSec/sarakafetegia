@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -33,8 +33,9 @@
 
 <!-- Favicons -->
 <link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/img/brand/favicon-48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/brand/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/brand/favicon-512.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#2b1710">
@@ -42,7 +43,7 @@
 <!-- Fonts (self-hosted) -->
 <link rel="preload" href="assets/fonts/bricolage-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/petrona-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/photos/interior-wide-1600.webp" as="image" fetchpriority="high">
+<link rel="preload" href="assets/img/real/terraza-amplia-sombrillas-amstel-mesas-blancas-sillas-portico-azul-rio.jpg" as="image" fetchpriority="high">
 
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
@@ -137,7 +138,7 @@
 <header class="site-header" data-scrolled="false">
   <div class="container nav">
     <a class="nav-logo" href="index.html" aria-label="Sara Kafetegia — inicio">
-      <img class="nav-logo-mark" src="assets/img/brand/mark-120.webp" width="120" height="120" alt="" decoding="async">
+      <img class="nav-logo-mark" src="assets/img/brand/logo-mark-400.webp" srcset="assets/img/brand/logo-mark-400.webp 1x, assets/img/brand/logo-mark-800.webp 2x" width="400" height="400" alt="" decoding="async">
       <span class="nav-logo-name">Sara Kafetegia</span>
     </a>
     <nav aria-label="Principal">
@@ -172,13 +173,12 @@
 
 <main id="main">
 
-<!-- ============ HERO (compact, foto interior REAL) ============ -->
+<!-- ============ HERO (compact, foto terraza real) ============ -->
 <section class="hero hero-compact" aria-label="Contacto">
   <div class="hero-media">
-    <img src="assets/img/photos/interior-wide-1600.webp"
-         srcset="assets/img/photos/interior-wide-640.webp 640w, assets/img/photos/interior-wide-1024.webp 1024w, assets/img/photos/interior-wide-1600.webp 1600w"
+    <img src="assets/img/real/terraza-amplia-sombrillas-amstel-mesas-blancas-sillas-portico-azul-rio.jpg"
          sizes="100vw" width="1600" height="900" fetchpriority="high" decoding="async"
-         alt="Interior de Sara Kafetegia con luz cálida, plantas y láminas de café en la pared">
+         alt="Terraza de Sara Kafetegia con sombrillas Amstel, mesas blancas, pórtico azul y vistas al río Bidasoa en Bera">
     <span class="hero-glow" aria-hidden="true"></span>
   </div>
   <div class="container hero-inner">
@@ -190,8 +190,8 @@
     <span class="open-badge" data-open="true" data-open-text="Abierto ahora" data-closed-text="Cerrado ahora" style="margin-top:1rem">
       <span class="dot" aria-hidden="true"></span><span class="open-label">Abierto ahora</span>
     </span>
-    <h1 class="hero-rise">Pásate a vernos a Bera</h1>
-    <p class="lead hero-rise" style="--rise-delay:.08s">Estamos en el centro del pueblo, con la cafetera siempre lista. Aquí tienes cómo llegar, el horario y todas las formas de contactarnos.</p>
+    <h1 class="hero-rise">Ven a vernos junto al Bidasoa</h1>
+    <p class="lead hero-rise" style="--rise-delay:.08s">Terraza con vistas al río, interior acogedor y siempre con la cafetera lista. En el centro de Bera, esperándote.</p>
   </div>
 </section>
 
@@ -200,8 +200,8 @@
   <div class="container">
     <div class="section-head">
       <span class="eyebrow"><svg width="18" height="18" aria-hidden="true"><use href="assets/icons/sprite.svg#i-pin"></use></svg>Dónde y cuándo</span>
-      <h2 id="info-h">Toda la información, a mano</h2>
-      <p>Llámanos, escríbenos o pásate sin más. Para reservas de grupo o meriendas grandes, mejor un toque por teléfono.</p>
+      <h2 id="info-h">Estamos aquí para lo que necesites</h2>
+      <p>Para grupos o meriendas de cuadrilla, una llamada es lo más rápido. Para todo lo demás, pásate sin avisar.</p>
     </div>
 
     <div class="info-grid" data-reveal="stagger">
@@ -259,6 +259,30 @@
   </div>
 </section>
 
+<!-- ============ TERRAZA SPLIT ============ -->
+<section class="section" aria-labelledby="terraza-h">
+  <div class="container">
+    <div class="split" data-reveal>
+      <figure class="split-media">
+        <img src="assets/img/real/terraza-panoramica-sombrillas-amstel-mesas-blancas-rio-bidasoa.jpg"
+             width="1200" height="800" loading="lazy" decoding="async"
+             alt="Terraza panorámica de Sara Kafetegia con sombrillas Amstel, mesas blancas y vistas al río Bidasoa en Bera, Navarra"
+             style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-lg)">
+      </figure>
+      <div class="split-body">
+        <span class="eyebrow"><svg width="18" height="18" aria-hidden="true"><use href="assets/icons/sprite.svg#i-sun"></use></svg>Terraza exterior · Bera</span>
+        <h2 id="terraza-h">Una terraza única junto al río</h2>
+        <p class="lead">Cuando el tiempo acompaña, la terraza de Sara Kafetegia es el mejor sitio de Bera para tomarte algo.</p>
+        <p>Con vistas al Bidasoa, sombrillas, flores y ese ambiente de pueblo que no tiene precio. Ven a comprobarlo.</p>
+        <a class="btn btn-lg magnetic" href="https://www.google.com/maps/search/?api=1&query=Sara+Kafetegia+Bera+Navarra" rel="noopener" target="_blank">
+          <svg width="20" height="20" aria-hidden="true"><use href="assets/icons/sprite.svg#i-route"></use></svg>
+          Cómo llegar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ MAP / CÓMO LLEGAR ============ -->
 <section class="section section-sand" id="como-llegar" aria-labelledby="map-h">
   <div class="container">
@@ -271,12 +295,12 @@
       <div class="map-cover" role="button" tabindex="0"
            data-src="https://www.google.com/maps?q=Sara+Kafetegia%2C+Iturlandeta+Karrika+6%2C+Bera%2C+Navarra&output=embed"
            data-title="Mapa de Sara Kafetegia en Bera">
-        <img src="assets/img/photos/bera-1024.webp" width="1024" height="682" loading="lazy" alt="Vista de Bera, en el valle del Bidasoa, donde está Sara Kafetegia">
+        <img src="assets/img/real/terraza-exterior-sombrilla-arboleda-sillas-grises-macetas-flores-rio.jpg" width="1024" height="682" loading="lazy" alt="Terraza exterior de Sara Kafetegia entre arboleda, con sillas grises, macetas con flores y vistas al río en Bera">
         <span class="btn btn-lg">
           <svg width="22" height="22" aria-hidden="true"><use href="assets/icons/sprite.svg#i-route"></use></svg>
           Ver mapa
         </span>
-        <p style="max-width:34ch">Pulsa para cargar el mapa de Google. Así la página vuela y solo cargas el mapa cuando lo necesitas.</p>
+        <p style="max-width:34ch">Pulsa para cargar el mapa interactivo. Iturlandeta Karrika, 6 — en pleno centro de Bera, a un paso del río.</p>
       </div>
     </div>
   </div>
@@ -302,10 +326,39 @@
         <p>Hay aparcamiento en las calles cercanas y en las zonas habilitadas del pueblo. Deja el coche a un paso y acércate andando: el centro de Bera se recorre en un momento.</p>
       </article>
       <article class="feature">
-        <svg class="feature-ico" aria-hidden="true"><use href="assets/icons/sprite.svg#i-heart"></use></svg>
+        <svg class="feature-ico" aria-hidden="true"><use href="assets/icons/sprite.svg#i-pin"></use></svg>
         <h3>A pie por el pueblo</h3>
-        <p>Estamos en Iturlandeta Karrika, en pleno centro, junto a las casas de piedra y a un paseo de la iglesia de San Esteban y la casa Itzea. Si bajas de Larun, te pilla de camino.</p>
+        <p>Desde la plaza, en un minuto. Desde el aparcamiento, andando por el centro histórico entre las casas de piedra.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA MINI EXTERIOR ============ -->
+<section class="section" aria-label="Así nos encontrarás">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow"><svg width="18" height="18" aria-hidden="true"><use href="assets/icons/sprite.svg#i-pin"></use></svg>Así nos encontrarás</span>
+    </div>
+    <div class="grid grid-3" data-reveal="stagger">
+      <figure style="border-radius:var(--r-md);overflow:hidden;aspect-ratio:4/3;margin:0">
+        <img src="assets/img/real/puerta-entrada-cristal-logo-sara-kafetegia-terraza-sillas-blancas-flores.jpg"
+             width="800" height="600" loading="lazy" decoding="async"
+             alt="Puerta de entrada de cristal con el logo de Sara Kafetegia, terraza con sillas blancas y flores en la fachada"
+             style="width:100%;height:100%;object-fit:cover;display:block">
+      </figure>
+      <figure style="border-radius:var(--r-md);overflow:hidden;aspect-ratio:4/3;margin:0">
+        <img src="assets/img/real/cartel-exterior-sara-kafetegia-dorado-logo-croissant-taza-cafe.jpg"
+             width="800" height="600" loading="lazy" decoding="async"
+             alt="Cartel exterior dorado de Sara Kafetegia con el logo, un croissant y una taza de café"
+             style="width:100%;height:100%;object-fit:cover;display:block">
+      </figure>
+      <figure style="border-radius:var(--r-md);overflow:hidden;aspect-ratio:4/3;margin:0">
+        <img src="assets/img/real/ventana-exterior-flores-petunias-moradas-vinilo-sara-kafetegia-fachada.jpg"
+             width="800" height="600" loading="lazy" decoding="async"
+             alt="Ventana exterior de Sara Kafetegia decorada con flores petunias moradas y vinilo con el nombre del local en la fachada"
+             style="width:100%;height:100%;object-fit:cover;display:block">
+      </figure>
     </div>
   </div>
 </section>
@@ -359,8 +412,8 @@
 <!-- ============ CTA BAND ============ -->
 <section class="section section-dark grain" aria-labelledby="cta-h">
   <div class="container center-text" data-reveal>
-    <h2 id="cta-h">Te esperamos en Bera</h2>
-    <p class="lead" style="margin-inline:auto;color:var(--on-dark-muted)">El café está recién hecho y la mesa, libre. Ven cuando quieras, sin prisa.</p>
+    <h2 id="cta-h">El café está recién hecho</h2>
+    <p class="lead" style="margin-inline:auto;color:var(--on-dark-muted)">La terraza, libre. Ven cuando quieras.</p>
     <div class="hero-actions" style="justify-content:center">
       <a class="btn btn-lg btn-fill magnetic" href="https://www.google.com/maps/search/?api=1&query=Sara+Kafetegia+Bera+Navarra" rel="noopener" target="_blank">
         <svg width="22" height="22" aria-hidden="true"><use href="assets/icons/sprite.svg#i-route"></use></svg>
@@ -419,3 +472,4 @@
 
 </body>
 </html>
+
