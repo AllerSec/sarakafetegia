@@ -1,14 +1,16 @@
 # Sara Kafetegia — Información completa
 
-> Cafetería en Bera (Bera de Bidasoa), Navarra. Este documento reúne toda la información del negocio en texto plano para asistentes de IA y motores de respuesta. Última actualización: junio de 2026.
+> Cafetería en Bera (Bera de Bidasoa), Navarra. Este documento reúne toda la información del negocio en texto plano para asistentes de IA y motores de respuesta. Última actualización: julio de 2026.
 
 ---
 
 ## 1. Quiénes somos
 
-Sara Kafetegia (también conocida como Cafetería Sara) es una cafetería de pueblo en el centro de Bera (Bera de Bidasoa), en la comarca de Bortziriak (Cinco Villas), dentro del valle del Bidasoa, en Navarra. Servimos café recién hecho, desayunos, bollería y repostería en un local cálido, con luz acogedora, plantas y trato cercano.
+Sara Kafetegia (también conocida como Cafetería Sara) es una cafetería de pueblo en el centro de Bera (Bera de Bidasoa), en la comarca de Bortziriak (Cinco Villas), dentro del valle del Bidasoa, en Navarra. Servimos café recién hecho, desayunos, bollería, pintxos y repostería en un local cálido con mural de bosque, bombillas Edison, estanterías con libros, plantas y trato cercano.
 
-Nuestra forma de trabajar se resume en tres palabras: cálida, cercana y sin prisa. Abrimos temprano para el café de la mañana y volvemos por la tarde para las meriendas.
+Nuestra seña de identidad es la **terraza exterior junto al río Bidasoa**: amplia, con pórtico, sombrillas, mesas, flores y barricas decorativas, con vistas directas al río y la arboleda. Abre cuando el tiempo acompaña.
+
+Nuestra forma de trabajar se resume en tres palabras: cálida, cercana y sin prisa. Abrimos temprano para el café de la mañana y volvemos por la tarde para las meriendas y el aperitivo.
 
 ## 2. Datos de contacto y ubicación
 
@@ -38,38 +40,23 @@ Damos servicio principalmente a Bera y a los pueblos cercanos del Bidasoa y Bort
 
 ## 5. Carta (orientativa)
 
-Café:
-- Espresso — 1,30 €
-- Cortado — 1,40 €
-- Café con leche — 1,70 €
-- Capuchino — 1,90 €
-- Café con hielo — 1,80 €
-- Café para llevar — desde 1,40 €
-- Suplemento leche vegetal (avena, soja, almendra) — 0,30 €
+Café (recién molido; leche de avena, soja o almendra sin coste extra):
+- Espresso, cortado, café con leche, capuchino con latte art, café con hielo, descafeinado de máquina.
 
-Desayunos:
-- Desayuno Bidasoa: café, zumo natural y tostada — 4,90 €
-- Tostada con tomate, aceite o mermelada — 2,20 €
-- Café con croissant o napolitana — desde 2,90 €
+Desayunos y bollería (pan artesano fresco cada mañana):
+- Desayuno Bidasoa: café + zumo + tostada con tomate y aceite.
+- Tostada con tomate y aceite; café con croissant.
+- Croissants de mantequilla, napolitanas de chocolate, donuts, palmeras, bollos de nata (la bollería del día cambia cada mañana).
+- Tarta del día, casera, según temporada.
 
-Bollería y dulce:
-- Croissant de mantequilla — 1,60 €
-- Napolitana de chocolate — 1,80 €
-- Bizcocho casero del día — 2,20 €
-- Porción de tarta — 3,20 €
+Salado (vitrina del día, todo hecho en casa):
+- Bocadillo de tortilla española, bocadillo de jamón y bocadillos variados según vitrina.
 
-Salado:
-- Sándwich mixto — 3,20 €
-- Tostada de aguacate — 4,50 €
-- Pincho del día — consultar
+Aperitivo y bebidas:
+- Vino rosado (con San Pellegrino, la combinación de la casa), cerveza Amstel, vermut.
+- Zumo natural exprimido al momento, tés e infusiones (manzanilla, menta, rooibos…), chocolate caliente, refrescos.
 
-Bebidas:
-- Té e infusiones — 1,70 €
-- Chocolate caliente — 2,40 €
-- Zumo natural — 2,50 €
-- Refrescos — desde 1,80 €
-
-Los precios son orientativos y pueden variar. Para alérgenos e ingredientes, preguntar en barra.
+Rango de precios: € (económico). La carta y la vitrina cambian a diario según lo recién hecho; los precios se consultan en barra. Para alérgenos e ingredientes, preguntar en barra. Todo disponible para llevar.
 
 ## 6. Cómo hacemos el café
 
@@ -79,8 +66,8 @@ Los precios son orientativos y pueden variar. Para alérgenos e ingredientes, pr
 
 ## 7. Opciones dietéticas
 
-- Leches vegetales: avena, soja, almendra.
-- Opciones veganas en desayunos (tostada con tomate y aceite, fruta).
+- Leches vegetales (avena, soja, almendra) para cualquier café, sin coste extra.
+- Cada día alguna opción vegana y, casi siempre, algo sin gluten; preguntar por las del día.
 - Para intolerancias o alergias, preguntar en barra: informamos de los ingredientes de cada producto.
 
 ## 8. Contexto local: Bera y el Bidasoa
@@ -95,14 +82,20 @@ R: En Iturlandeta Karrika, 6, en el centro de Bera (Bera de Bidasoa), Navarra, c
 P: ¿Qué horario tiene la cafetería?
 R: Lunes a viernes de 7:30 a 13:30 y de 17:00 a 20:30; sábados y domingos de 8:00 a 14:00 y de 17:00 a 20:30.
 
+P: ¿Tienen terraza?
+R: Sí, una terraza amplia junto al río Bidasoa, con pórtico, sombrillas, mesas, flores y vistas a la arboleda. Es una de las señas de identidad del local y abre cuando el tiempo acompaña.
+
 P: ¿Qué se puede tomar?
-R: Café recién hecho (espresso, cortado, café con leche, capuchino), desayunos, bollería y repostería, además de tés, infusiones, refrescos y zumos.
+R: Café recién hecho (espresso, cortado, café con leche, capuchino con latte art), desayunos, bollería, pintxos de tortilla, bocadillos, y para el aperitivo vino rosado, cerveza o vermut, además de tés, infusiones, chocolate caliente y zumos.
 
 P: ¿Tienen bollería y repostería?
-R: Sí, cada día croissants, napolitanas, bizcochos, tartas y dulces para acompañar el café o merendar.
+R: Sí, cada día croissants, napolitanas, donuts, palmeras, bollos de nata y la tarta del día para acompañar el café o merendar.
+
+P: ¿Tienen pintxos o algo salado?
+R: Sí: bocadillo de tortilla española, bocadillo de jamón y bocadillos variados según la vitrina del día, todo hecho en casa.
 
 P: ¿Se puede pedir café para llevar?
-R: Sí, café y desayunos para llevar durante todo el horario.
+R: Sí, café, bocadillos y bollería para llevar durante todo el horario.
 
 P: ¿Aceptan tarjeta?
 R: Sí: efectivo, tarjeta y Bizum.

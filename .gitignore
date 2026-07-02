@@ -10,5 +10,8 @@ node_modules/
 # Impeccable live-mode runtime (no es contenido del sitio)
 .impeccable/live/runtime/
 
+# Fotos crudas de WhatsApp ya importadas y renombradas en assets/img/real/
+fotosausar/
+
 # Nota: _source/ (imágenes originales) SÍ se versiona: es la fuente de
 # verdad de los assets. No se sirve en producción pero se conserva en git.

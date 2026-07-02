@@ -59,5 +59,7 @@
   .hero-scroll .drop, .open-badge .dot { animation: none !important; }
   .menu-card:hover .menu-card-media img,
   .gallery figure:hover img { transform: none; }
+  .scroll-progress, .hero-glow { display: none !important; }
+  [data-tilt] { transform: none !important; }
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
 }

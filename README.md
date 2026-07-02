@@ -8,9 +8,17 @@ desplegarse en **GitHub Pages** y **Netlify** con rutas relativas.
 
 - HTML5 semántico + CSS moderno (sin framework, sin build).
 - JavaScript vanilla + **GSAP 3** (vendorizado, self-hosted) para animaciones,
-  microinteracciones, reveals al scroll y transiciones de página.
+  microinteracciones (tilt 3D en cards, botones magnéticos, glow de cursor),
+  reveals al scroll, lightbox con navegación/gestos y transiciones de página.
 - Fuentes **self-hosted** (woff2): Bricolage Grotesque (display) + Petrona (texto).
-- Imágenes en **WebP** (responsive con `srcset`), vídeos hero MP4 + WebM.
+- **Fotos reales del local** en `assets/img/real/` servidas como **WebP responsive**
+  (variantes 640/1024/1600 con `srcset` + `sizes`; los `.jpg` son la fuente).
+  Pipeline: ffmpeg (`scale` + libwebp q80). Los nombres de archivo describen el
+  contenido real de la foto (verificado visualmente) — SEO de imagen + alt fiable.
+- **Speculation Rules** (prerender de páginas internas), preload del hero con
+  `imagesrcset`, barra de acción móvil fija (Llamar · Carta · Cómo llegar).
+- Formulario wired a **Netlify Forms** (AJAX + honeypot); en hosts sin soporte
+  degrada a mensaje con teléfono/WhatsApp.
 
 ## Estructura
 
@@ -59,8 +67,11 @@ que el sitio funciona igual en Pages y en Netlify.
   OG, sitemap y schema si el dominio final es otro.
 - Google Business Profile, reseñas y alta en Search Console / Bing / Apple
   Business Connect (ver guía SEO).
-- Imágenes reales propias adicionales (interior, equipo) para reforzar E-E-A-T:
-  reemplazar las de stock en `assets/img/` por fotos propias cuando estén.
+- ~~Imágenes reales propias~~ ✔ Hecho: toda la web usa fotos reales del local
+  (`assets/img/real/`). Si llegan fotos nuevas, convertirlas con ffmpeg a WebP
+  en 640/1024/1600 y nombrarlas describiendo lo que se ve.
+- Si el sitio se despliega en Netlify, el formulario de contacto funciona solo
+  (Netlify Forms). En GitHub Pages muestra un aviso con teléfono/WhatsApp.
 
 ## Otros idiomas
 

@@ -86,6 +86,9 @@
       if (window.gsap && document.body.contains(curtain)) {
         document.documentElement.classList.remove('page-transitioning');
         window.gsap.fromTo(curtain, { scaleY: 1, transformOrigin: 'top' }, { scaleY: 0, duration: 0.5, ease: 'power3.out' });
+        // rAF puede quedar acelerado/pausado en pestañas en segundo plano:
+        // garantía dura de que la cortina nunca se queda a medias tapando la página
+        setTimeout(() => { if (window.gsap) window.gsap.set(curtain, { scaleY: 0 }); }, 1400);
       }
     });
   }
