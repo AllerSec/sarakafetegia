@@ -63,6 +63,13 @@
 }
 .site-header[data-scrolled="true"] { padding-block: .6rem; box-shadow: var(--shadow-md); }
 .site-header[data-scrolled="true"]::before { opacity: 1; }
+/* En móvil el header flota siempre sobre la foto del hero: sin scrim propio depende del
+   punto exacto donde caiga el crop de la imagen. Se le da un scrim discreto desde el arranque,
+   independiente del estado de scroll. */
+@media (max-width: 860px) {
+  .site-header::before { opacity: 1; background: linear-gradient(180deg, rgba(20,11,7,.62) 0%, rgba(20,11,7,.34) 70%, transparent 100%); }
+  .site-header[data-scrolled="true"]::before { background: var(--espresso); }
+}
 
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 .nav-logo { display: inline-flex; align-items: center; gap: .6rem; transform-origin: left center; transition: transform var(--dur-3) var(--ease-out); }
@@ -72,7 +79,11 @@
   font-family: var(--font-display); font-weight: 700; font-size: 1.3rem;
   color: var(--on-dark); letter-spacing: -.02em; line-height: 1; white-space: nowrap;
 }
-@media (max-width: 420px) { .nav-logo-name { font-size: 1.1rem; } .nav-logo-mark { height: 66px; } }
+@media (max-width: 860px) {
+  .nav-logo-mark { height: 44px; }
+  .nav-logo-name { font-size: 1.05rem; }
+}
+@media (max-width: 420px) { .nav-logo-name { font-size: .96rem; } .nav-logo-mark { height: 40px; } }
 .nav-logo-text {
   font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
   color: var(--on-dark); letter-spacing: -.01em; line-height: 1;
@@ -93,10 +104,14 @@
 .nav-cta { margin-inline-start: .5rem; }
 
 .nav-toggle {
-  display: none; width: 48px; height: 48px; border-radius: var(--r-sm);
+  display: none; width: 44px; height: 44px; border-radius: var(--r-pill);
   align-items: center; justify-content: center; color: var(--on-dark);
+  background: color-mix(in oklch, var(--espresso-deep) 55%, transparent);
+  border: 1px solid color-mix(in oklch, var(--on-dark) 22%, transparent);
+  transition: background-color var(--dur-2) var(--ease-out);
 }
-.nav-toggle svg { width: 28px; height: 28px; }
+.nav-toggle:hover { background: color-mix(in oklch, var(--espresso-deep) 75%, transparent); }
+.nav-toggle svg { width: 22px; height: 22px; }
 
 /* Mobile full-screen menu */
 .mobile-menu {
@@ -157,10 +172,23 @@
   box-shadow: var(--shadow-lg); }
 .hero .open-badge { margin-bottom: .5rem; }
 .hero-logo img { height: clamp(96px, 16vw, 150px); width: auto; }
-@media (max-width: 560px) { .hero-logo { padding: .8rem 1.2rem; } }
 .hero h1 { color: var(--on-dark); font-size: var(--step-5); max-width: 16ch; }
 .hero .lead { color: var(--on-dark-muted); max-width: 46ch; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-block-start: 2rem; }
+/* Móvil: el medallón del logo competía en tamaño con el titular y todo el bloque
+   (badge → logo → h1 → lead → CTA) quedaba apretado sin ritmo. Se reduce el logo,
+   se da respiración proporcional entre bloques y las CTAs pasan a ancho completo
+   apiladas (más fáciles de tocar, más ordenadas que envueltas en dos columnas). */
+@media (max-width: 560px) {
+  .hero-inner { padding-block-end: clamp(2.25rem, 8vh, 3.5rem); }
+  .hero .open-badge { margin-bottom: .85rem; }
+  .hero-logo { padding: .7rem 1.05rem; margin-block: 0 1.1rem; border-radius: var(--r-md); }
+  .hero-logo img { height: 64px; }
+  .hero h1 { margin-block-end: .9rem; }
+  .hero .lead { margin-block-end: 1.5rem; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: .75rem; margin-block-start: 0; }
+  .hero-actions .btn { width: 100%; }
+}
 .hero-scroll {
   position: absolute; left: 50%; bottom: 1.4rem; transform: translateX(-50%); z-index: 2;
   color: var(--on-dark-muted); display: grid; place-items: center; gap: .4rem;
