@@ -4,7 +4,6 @@
 User-agent: *
 Allow: /
 Disallow: /_source/
-Disallow: /legal/
 
 # --- AI / LLM crawlers: explicitly welcome (queremos aparecer en respuestas de IA) ---
 User-agent: GPTBot

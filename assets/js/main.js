@@ -13,6 +13,15 @@
   const $$ = (s, c = doc) => Array.from(c.querySelectorAll(s));
   const onIdle = (cb) => ('requestIdleCallback' in window) ? requestIdleCallback(cb, { timeout: 1200 }) : setTimeout(cb, 300);
 
+  /* ---------------- i18n: cadenas según <html lang> ---------------- */
+  const I18N = {
+    es: { open: 'Abierto · hasta las {h}', opens: 'Cerrado · abre a las {h}', opensTomorrow: 'Cerrado · abre mañana a las {h}', closed: 'Cerrado ahora', prevPhoto: 'Foto anterior', nextPhoto: 'Foto siguiente', enlarge: 'Ampliar: ', map: 'Mapa', locale: 'es-ES' },
+    eu: { open: 'Irekita · {h} arte', opens: 'Itxita · {h}etan irekiko dugu', opensTomorrow: 'Itxita · bihar {h}etan irekiko dugu', closed: 'Itxita orain', prevPhoto: 'Aurreko argazkia', nextPhoto: 'Hurrengo argazkia', enlarge: 'Handitu: ', map: 'Mapa', locale: 'eu-ES' },
+    en: { open: 'Open · until {h}', opens: 'Closed · opens at {h}', opensTomorrow: 'Closed · opens tomorrow at {h}', closed: 'Closed now', prevPhoto: 'Previous photo', nextPhoto: 'Next photo', enlarge: 'View larger: ', map: 'Map', locale: 'en-GB' },
+    fr: { open: 'Ouvert · jusqu’à {h}', opens: 'Fermé · ouvre à {h}', opensTomorrow: 'Fermé · ouvre demain à {h}', closed: 'Fermé actuellement', prevPhoto: 'Photo précédente', nextPhoto: 'Photo suivante', enlarge: 'Agrandir : ', map: 'Carte', locale: 'fr-FR' }
+  };
+  const T = I18N[(root.lang || 'es').slice(0, 2)] || I18N.es;
+
   if (hasGSAP && !prefersReduced) root.classList.add('js-motion');
 
   /* ---------------- Year stamp ---------------- */
@@ -78,16 +87,16 @@
     const label = $('.open-label', badge);
     if (!label) return;
     if (open) {
-      label.textContent = 'Abierto · hasta las ' + fmtHour(current[1]);
+      label.textContent = T.open.replace('{h}', fmtHour(current[1]));
     } else {
       const next = spans.find(([from]) => mins < from);
       if (next) {
-        label.textContent = 'Cerrado · abre a las ' + fmtHour(next[0]);
+        label.textContent = T.opens.replace('{h}', fmtHour(next[0]));
       } else {
         const tomorrow = HOURS[(day + 1) % 7] || [];
         label.textContent = tomorrow.length
-          ? 'Cerrado · abre mañana a las ' + fmtHour(tomorrow[0][0])
-          : (badge.dataset.closedText || 'Cerrado ahora');
+          ? T.opensTomorrow.replace('{h}', fmtHour(tomorrow[0][0]))
+          : (badge.dataset.closedText || T.closed);
       }
     }
   });
@@ -123,7 +132,7 @@
       const src = cover.dataset.src;
       if (!wrap || !src) return;
       const iframe = doc.createElement('iframe');
-      iframe.src = src; iframe.loading = 'lazy'; iframe.title = cover.dataset.title || 'Mapa';
+      iframe.src = src; iframe.loading = 'lazy'; iframe.title = cover.dataset.title || T.map;
       iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
       iframe.allowFullscreen = true;
       wrap.appendChild(iframe);
@@ -147,12 +156,12 @@
       const svg = doc.createElementNS(SVG_NS, 'svg');
       svg.setAttribute('aria-hidden', 'true');
       const use = doc.createElementNS(SVG_NS, 'use');
-      use.setAttribute('href', 'assets/icons/sprite.svg#i-chevron');
+      use.setAttribute('href', '/assets/icons/sprite.svg#i-chevron');
       svg.appendChild(use); b.appendChild(svg);
       lightbox.appendChild(b); return b;
     };
-    const lbPrev = mkNav('lb-prev', 'Foto anterior');
-    const lbNext = mkNav('lb-next', 'Foto siguiente');
+    const lbPrev = mkNav('lb-prev', T.prevPhoto);
+    const lbNext = mkNav('lb-next', T.nextPhoto);
     const lbCount = doc.createElement('span');
     lbCount.className = 'lb-count'; lbCount.setAttribute('aria-hidden', 'true');
     const lbCaption = doc.createElement('p');
@@ -179,7 +188,7 @@
     figures.forEach((fig, i) => {
       fig.setAttribute('tabindex', '0'); fig.setAttribute('role', 'button');
       const img = $('img', fig);
-      if (img && img.alt) fig.setAttribute('aria-label', 'Ampliar: ' + img.alt);
+      if (img && img.alt) fig.setAttribute('aria-label', T.enlarge + img.alt);
       const trigger = () => open(i);
       fig.addEventListener('click', trigger);
       fig.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(); } });
@@ -202,54 +211,6 @@
       const dx = e.clientX - swipeX; swipeX = null;
       if (Math.abs(dx) > 44) { dx > 0 ? show(idx - 1) : show(idx + 1); }
     }, { passive: true });
-  }
-
-  /* ---------------- Contact form (antispam + validation) ---------------- */
-  const form = $('.form[data-validate]');
-  if (form) {
-    const status = $('.form-status', form);
-    const setErr = (field, msg) => {
-      field.classList.toggle('error', !!msg);
-      const m = $('.error-msg', field);
-      if (m) m.textContent = msg || '';
-      const input = $('input,textarea', field);
-      if (input) input.setAttribute('aria-invalid', msg ? 'true' : 'false');
-    };
-    const validateField = (field) => {
-      const input = $('input,textarea', field); if (!input) return true;
-      const v = input.value.trim();
-      if (input.required && !v) { setErr(field, input.dataset.msgRequired || 'Este campo es obligatorio.'); return false; }
-      if (input.type === 'email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { setErr(field, 'Introduce un email válido.'); return false; }
-      setErr(field, ''); return true;
-    };
-    $$('.field', form).forEach(field => {
-      const input = $('input,textarea', field);
-      input && input.addEventListener('blur', () => validateField(field));
-    });
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      if ($('.hp', form) && $('.hp input', form) && $('.hp input', form).value) return; // honeypot
-      let ok = true; let firstBad = null;
-      $$('.field', form).forEach(field => { if (!validateField(field)) { ok = false; firstBad = firstBad || field; } });
-      if (!ok) { firstBad && ($('input,textarea', firstBad) || {}).focus && $('input,textarea', firstBad).focus(); return; }
-      const btn = $('button[type="submit"]', form);
-      btn && (btn.disabled = true);
-      if (status) { status.textContent = 'Enviando…'; }
-      // Netlify Forms (AJAX). Si el host no lo soporta (p. ej. GitHub Pages),
-      // degradamos con un mensaje útil hacia teléfono/WhatsApp.
-      const data = new URLSearchParams(new FormData(form));
-      if (!data.has('form-name')) data.set('form-name', form.getAttribute('name') || 'contacto');
-      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() })
-        .then(res => {
-          if (!res.ok) throw new Error('http ' + res.status);
-          if (status) status.textContent = '¡Gracias! Hemos recibido tu mensaje y te responderemos muy pronto.';
-          form.reset();
-        })
-        .catch(() => {
-          if (status) status.textContent = 'No se ha podido enviar ahora mismo. Llámanos al 948 62 56 73 o escríbenos por WhatsApp y te atendemos al momento.';
-        })
-        .finally(() => { btn && (btn.disabled = false); });
-    });
   }
 
   /* ============================================================
@@ -359,11 +320,11 @@
       window.ScrollTrigger && window.ScrollTrigger.create({
         trigger: el, start: 'top 88%', once: true,
         onEnter: () => gsap.to(obj, { v: target, duration: 1.6, ease: 'power2.out',
-          onUpdate: () => { el.textContent = Math.round(obj.v).toLocaleString('es-ES') + suffix; } })
+          onUpdate: () => { el.textContent = Math.round(obj.v).toLocaleString(T.locale) + suffix; } })
       });
     });
   } else {
     // No motion: ensure count-ups show final value
-    $$('[data-count]').forEach(el => { el.textContent = Number(el.dataset.count).toLocaleString('es-ES') + (el.dataset.suffix || ''); });
+    $$('[data-count]').forEach(el => { el.textContent = Number(el.dataset.count).toLocaleString(T.locale) + (el.dataset.suffix || ''); });
   }
 })();

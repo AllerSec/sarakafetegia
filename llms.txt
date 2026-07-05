@@ -24,6 +24,15 @@
 - [Sobre nosotros](https://sarakafetegia.com/sobre-nosotros.html): historia del local, valores, contexto de Bera y el Bidasoa, galería.
 - [Contacto](https://sarakafetegia.com/contacto.html): dirección, cómo llegar, mapa, horario, teléfono y formulario.
 
+## Idiomas / Hizkuntzak / Languages / Langues
+
+La web completa está disponible en cuatro idiomas (mismo contenido, URLs propias por idioma, hreflang declarado):
+
+- Español (por defecto): [https://sarakafetegia.com/](https://sarakafetegia.com/)
+- Euskara: [https://sarakafetegia.com/eu/](https://sarakafetegia.com/eu/) — karta: /eu/karta.html · guri buruz: /eu/guri-buruz.html · kontaktua: /eu/kontaktua.html
+- English: [https://sarakafetegia.com/en/](https://sarakafetegia.com/en/) — menu: /en/menu.html · about: /en/about-us.html · contact: /en/contact.html
+- Français: [https://sarakafetegia.com/fr/](https://sarakafetegia.com/fr/) — carte: /fr/carte.html · qui sommes-nous: /fr/qui-sommes-nous.html · contact: /fr/contact.html
+
 ## Qué ofrecemos
 
 - Café recién hecho: espresso, cortado, café con leche, capuchino con latte art, café con hielo; leche vegetal (avena, soja, almendra) sin coste extra.

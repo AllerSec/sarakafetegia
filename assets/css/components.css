@@ -67,12 +67,12 @@
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 .nav-logo { display: inline-flex; align-items: center; gap: .6rem; transform-origin: left center; transition: transform var(--dur-3) var(--ease-out); }
 .site-header[data-scrolled="true"] .nav-logo { transform: scale(.9); }
-.nav-logo-mark { height: 60px; width: auto; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
+.nav-logo-mark { height: 78px; width: auto; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
 .nav-logo-name {
   font-family: var(--font-display); font-weight: 700; font-size: 1.3rem;
   color: var(--on-dark); letter-spacing: -.02em; line-height: 1; white-space: nowrap;
 }
-@media (max-width: 420px) { .nav-logo-name { font-size: 1.1rem; } .nav-logo-mark { height: 52px; } }
+@media (max-width: 420px) { .nav-logo-name { font-size: 1.1rem; } .nav-logo-mark { height: 66px; } }
 .nav-logo-text {
   font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
   color: var(--on-dark); letter-spacing: -.01em; line-height: 1;
@@ -122,6 +122,7 @@
 @media (max-width: 860px) {
   .nav-links { display: none; }
   .nav-toggle { display: inline-flex; }
+  .nav-cta { display: none; }
 }
 
 /* ---------- Hero ---------- */
@@ -140,6 +141,16 @@
     linear-gradient(180deg, rgba(30,16,11,.46) 0%, rgba(34,18,12,.14) 30%, rgba(34,18,12,.10) 46%, rgba(34,18,12,.56) 78%, rgba(26,14,9,.84) 100%);
 }
 .hero-inner { position: relative; z-index: 2; padding-block: clamp(2rem, 6vh, 6rem) clamp(3rem, 9vh, 7rem); color: var(--on-dark); }
+/* En móvil el hero es una franja muy alta y estrecha: el object-fit:cover puede recortar la
+   foto de forma que el gradiente global (pensado en % de la imagen completa) no caiga sobre el
+   texto. Se añade un scrim propio pegado al bloque de texto, independiente del crop de la foto. */
+@media (max-width: 700px) {
+  .hero-inner::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    inset: -3rem -1.25rem -2rem;
+    background: linear-gradient(180deg, transparent 0%, rgba(20,11,7,.55) 18%, rgba(18,10,6,.88) 42%, rgba(16,9,5,.94) 100%);
+  }
+}
 /* Logo grande del negocio en el hero — medallón claro para que el texto del logo se lea sobre la foto oscura */
 .hero-logo { display: block; width: fit-content; margin-block: 1rem .5rem; padding: 1rem 1.6rem;
   background: color-mix(in oklch, var(--crema) 92%, white); border-radius: var(--r-lg);
@@ -624,3 +635,19 @@
   }
   .faq details[open]::details-content { block-size: auto; }
 }
+
+/* ---------- Selector de idioma (ES · EU · EN · FR) ---------- */
+.lang-switch { display: flex; align-items: center; gap: .1rem; }
+.lang-switch a {
+  font-family: var(--font-display); font-size: .78rem; font-weight: 600;
+  letter-spacing: .08em; line-height: 1; padding: .45rem .5rem;
+  border-radius: var(--r-sm); color: var(--on-dark-muted);
+  transition: color var(--dur-2) var(--ease-out), background-color var(--dur-2) var(--ease-out);
+}
+.lang-switch a:hover { color: var(--on-dark); }
+.lang-switch a[aria-current="true"] { color: var(--crema); background: rgba(255,255,255,.1); }
+@media (max-width: 860px) { .site-header .lang-switch { display: none; } }
+.mobile-menu .lang-switch { justify-content: center; gap: .5rem; margin-top: 1.75rem; }
+.mobile-menu .lang-switch a { font-size: 1rem; padding: .55rem .75rem; }
+.footer-langs a { text-decoration: none; }
+.footer-langs a[aria-current="true"] { color: var(--amber); }

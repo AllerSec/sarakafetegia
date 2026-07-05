@@ -8,6 +8,11 @@
 <meta name="author" content="Sara Kafetegia">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://sarakafetegia.com/contacto.html">
+<link rel="alternate" hreflang="es" href="https://sarakafetegia.com/contacto.html">
+<link rel="alternate" hreflang="eu" href="https://sarakafetegia.com/eu/kontaktua.html">
+<link rel="alternate" hreflang="en" href="https://sarakafetegia.com/en/contact.html">
+<link rel="alternate" hreflang="fr" href="https://sarakafetegia.com/fr/contact.html">
+<link rel="alternate" hreflang="x-default" href="https://sarakafetegia.com/contacto.html">
 
 <!-- Geo / local -->
 <meta name="geo.region" content="ES-NA">
@@ -18,6 +23,9 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="eu_ES">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="fr_FR">
 <meta property="og:site_name" content="Sara Kafetegia">
 <meta property="og:title" content="Contacto y cómo llegar — Sara Kafetegia (Bera, Navarra)">
 <meta property="og:description" content="Dónde estamos, horario y cómo llegar a Sara Kafetegia, en el centro de Bera, valle del Bidasoa. Te esperamos con el café recién hecho.">
@@ -169,6 +177,12 @@
         <li><a class="nav-link" href="contacto.html" aria-current="page">Contacto</a></li>
       </ul>
     </nav>
+    <div class="lang-switch" role="navigation" aria-label="Idioma">
+      <a href="/contacto.html" hreflang="es" lang="es" aria-current="true">ES</a>
+      <a href="/eu/kontaktua.html" hreflang="eu" lang="eu">EU</a>
+      <a href="/en/contact.html" hreflang="en" lang="en">EN</a>
+      <a href="/fr/contact.html" hreflang="fr" lang="fr">FR</a>
+    </div>
     <a class="btn nav-cta magnetic" href="contacto.html#como-llegar">
       <svg width="20" height="20" aria-hidden="true"><use href="assets/icons/sprite.svg#i-route"></use></svg>
       Cómo llegar
@@ -188,6 +202,12 @@
     <a href="sobre-nosotros.html">Sobre nosotros</a>
     <a href="contacto.html">Contacto</a>
     <a class="btn" href="contacto.html#como-llegar" style="margin-top:1rem">Cómo llegar</a>
+    <div class="lang-switch" aria-label="Idioma">
+      <a href="/contacto.html" hreflang="es" lang="es" aria-current="true">ES</a>
+      <a href="/eu/kontaktua.html" hreflang="eu" lang="eu">EU</a>
+      <a href="/en/contact.html" hreflang="en" lang="en">EN</a>
+      <a href="/fr/contact.html" hreflang="fr" lang="fr">FR</a>
+    </div>
   </nav>
 </div>
 
@@ -383,53 +403,6 @@
   </div>
 </section>
 
-<!-- ============ CONTACT FORM ============ -->
-<section class="section section-sand" aria-labelledby="form-h">
-  <div class="container-narrow">
-    <div class="section-head center">
-      <span class="eyebrow"><svg width="18" height="18" aria-hidden="true"><use href="assets/icons/sprite.svg#i-mail"></use></svg>Escríbenos</span>
-      <h2 id="form-h">¿Una consulta o una reserva de grupo?</h2>
-      <p>Déjanos un mensaje y te contestamos pronto. Para reservas de grupo o meriendas, lo más rápido es llamarnos al 948 62 56 73.</p>
-    </div>
-
-    <form class="form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="empresa" data-validate novalidate data-reveal>
-      <input type="hidden" name="form-name" value="contacto">
-      <div class="field">
-        <label for="nombre">Nombre <span class="req" aria-hidden="true">*</span></label>
-        <input type="text" id="nombre" name="nombre" autocomplete="name" required
-               data-msg-required="Dinos cómo te llamas, por favor." placeholder="Tu nombre">
-        <span class="error-msg" aria-live="polite"></span>
-      </div>
-      <div class="field">
-        <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-        <input type="email" id="email" name="email" autocomplete="email" inputmode="email"
-               spellcheck="false" autocapitalize="off" required
-               data-msg-required="Necesitamos un email para responderte." placeholder="tu@email.com">
-        <span class="error-msg" aria-live="polite"></span>
-      </div>
-      <div class="field">
-        <label for="mensaje">Mensaje <span class="req" aria-hidden="true">*</span></label>
-        <textarea id="mensaje" name="mensaje" required
-                  data-msg-required="Cuéntanos en qué podemos ayudarte." placeholder="¿En qué podemos ayudarte?"></textarea>
-        <span class="error-msg" aria-live="polite"></span>
-      </div>
-      <!-- Honeypot antispam: invisible, no rellenar -->
-      <div class="hp" aria-hidden="true">
-        <label for="empresa">No rellenar</label>
-        <input type="text" id="empresa" name="empresa" tabindex="-1" autocomplete="off">
-      </div>
-      <div>
-        <button class="btn btn-lg magnetic" type="submit">
-          <svg width="22" height="22" aria-hidden="true"><use href="assets/icons/sprite.svg#i-mail"></use></svg>
-          Enviar mensaje
-        </button>
-      </div>
-      <p class="form-status" role="status" aria-live="polite"></p>
-      <p class="help" style="text-align:center">También puedes pasarte sin avisar — siempre hay sitio para un café.</p>
-    </form>
-  </div>
-</section>
-
 <!-- ============ CTA BAND ============ -->
 <section class="section section-dark grain" aria-labelledby="cta-h">
   <div class="container center-text" data-reveal>
@@ -502,6 +475,7 @@
     <div class="footer-bottom">
       <p>© <span data-year>2026</span> Sara Kafetegia · Bera (Navarra)</p>
       <p>Diseñado por <a href="https://unaxaller.com" rel="noopener" target="_blank">unaxaller.com</a></p>
+      <p class="footer-langs"><a href="/contacto.html" hreflang="es" lang="es" aria-current="true">Español</a> · <a href="/eu/kontaktua.html" hreflang="eu" lang="eu">Euskara</a> · <a href="/en/contact.html" hreflang="en" lang="en">English</a> · <a href="/fr/contact.html" hreflang="fr" lang="fr">Français</a></p>
       <p><a href="legal/aviso-legal.html">Aviso legal</a> · <a href="legal/privacidad.html">Privacidad</a> · <a href="legal/cookies.html">Cookies</a></p>
     </div>
   </div>

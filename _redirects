@@ -1,3 +1,7 @@
 # Netlify _redirects — Sara Kafetegia
-# Cualquier ruta no encontrada → 404 personalizada.
+# 404 por idioma: cualquier ruta no encontrada dentro de un idioma → su 404.
+/eu/*  /eu/404.html  404
+/en/*  /en/404.html  404
+/fr/*  /fr/404.html  404
+# Resto (español, raíz) → 404 en español.
 /*  /404.html  404

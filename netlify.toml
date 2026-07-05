@@ -44,7 +44,22 @@
 
 # ---- 404 ----
 # Netlify usa 404.html automáticamente para rutas no encontradas.
-# Redirección explícita de respaldo a la 404 personalizada:
+# 404 por idioma primero (el orden importa); respaldo en español al final.
+[[redirects]]
+  from = "/eu/*"
+  to = "/eu/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/en/*"
+  to = "/en/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/fr/*"
+  to = "/fr/404.html"
+  status = 404
+
 [[redirects]]
   from = "/*"
   to = "/404.html"
