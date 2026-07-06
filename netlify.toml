@@ -13,11 +13,25 @@
     X-Frame-Options = "SAMEORIGIN"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
-# Caché agresiva para assets con hash de contenido estable
+# Caché agresiva solo para assets cuyo contenido no cambia (fotos, vídeo, fuentes)
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# CSS y JS NO llevan hash en el nombre de archivo: cachearlos como immutable
+# deja a los móviles con versiones viejas durante un año (bug real visto en
+# iOS: navbar rota y hero ilegible por un components.css antiguo cacheado).
+# Revalidación con ETag: el navegador recibe 304 si el archivo no cambió.
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/assets/fonts/*"

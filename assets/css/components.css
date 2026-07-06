@@ -159,24 +159,37 @@
     linear-gradient(180deg, rgba(30,16,11,.46) 0%, rgba(34,18,12,.14) 30%, rgba(34,18,12,.10) 46%, rgba(34,18,12,.56) 78%, rgba(26,14,9,.84) 100%);
 }
 .hero-inner { position: relative; z-index: 2; padding-block: clamp(2rem, 6vh, 6rem) clamp(3rem, 9vh, 7rem); color: var(--on-dark); }
-/* En móvil el hero es una franja muy alta y estrecha: el object-fit:cover puede recortar la
-   foto de forma que el gradiente global (pensado en % de la imagen completa) no caiga sobre el
-   texto. Se añade un scrim propio pegado al bloque de texto, independiente del crop de la foto. */
-@media (max-width: 700px) {
+/* En móvil/tablet el hero es una franja muy alta y estrecha: el object-fit:cover puede
+   recortar la foto de forma que el gradiente global (pensado en % de la imagen completa)
+   no caiga sobre el texto. Scrim propio pegado al bloque de texto, independiente del crop. */
+@media (max-width: 860px) {
   .hero-inner::before {
     content: ""; position: absolute; z-index: -1; pointer-events: none;
     inset: -3rem -1.25rem -2rem;
-    background: linear-gradient(180deg, transparent 0%, rgba(20,11,7,.55) 18%, rgba(18,10,6,.88) 42%, rgba(16,9,5,.94) 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(20,11,7,.58) 16%, rgba(18,10,6,.90) 40%, rgba(16,9,5,.95) 100%);
   }
 }
-/* Logo grande del negocio en el hero · medallón claro para que el texto del logo se lea sobre la foto oscura */
-.hero-logo { display: block; width: fit-content; margin-block: 1rem .5rem; padding: 1rem 1.6rem;
-  background: color-mix(in oklch, var(--crema) 92%, white); border-radius: var(--r-lg);
-  box-shadow: var(--shadow-lg); }
+/* Logo del negocio en el hero (solo escritorio/tablet): sello circular crema,
+   ligeramente girado, como una pegatina de la casa. En móvil se quita: competía
+   con el titular y no aportaba (la marca ya está en la navbar). */
+.hero-logo {
+  display: grid; place-items: center;
+  width: clamp(118px, 13vw, 164px); aspect-ratio: 1; padding: 0;
+  background: color-mix(in oklch, var(--crema) 90%, white);
+  border-radius: 50%;
+  rotate: -4deg;
+  margin-block: 1rem .75rem;
+  box-shadow: 0 10px 32px rgba(20,10,6,.38),
+              inset 0 0 0 5px color-mix(in oklch, var(--espresso) 16%, transparent);
+}
+.hero-logo img { width: 72%; height: auto; }
 .hero .open-badge { margin-bottom: .5rem; }
-.hero-logo img { height: clamp(96px, 16vw, 150px); width: auto; }
 .hero h1 { color: var(--on-dark); font-size: var(--step-5); max-width: 16ch; }
 .hero .lead { color: var(--on-dark-muted); max-width: 46ch; }
+/* Móvil/tablet: subtítulo sobre foto en blanco cálido pleno, no atenuado (legibilidad) */
+@media (max-width: 860px) {
+  .hero .lead { color: var(--on-dark); }
+}
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-block-start: 2rem; }
 .hero-actions--center { justify-content: center; }
 .lead--center { margin-inline: auto; }
@@ -184,15 +197,14 @@
 .section-flush-top { padding-block: 2rem 0; }
 .section-cta-row { margin-top: 2.5rem; }
 .mobile-menu nav .btn { margin-top: 1rem; }
-/* Móvil: el medallón del logo competía en tamaño con el titular y todo el bloque
-   (badge → logo → h1 → lead → CTA) quedaba apretado sin ritmo. Se reduce el logo,
-   se da respiración proporcional entre bloques y las CTAs pasan a ancho completo
-   apiladas (más fáciles de tocar, más ordenadas que envueltas en dos columnas). */
+/* Móvil: sin medallón de logo (la marca ya está en navbar y H1); bloque limpio
+   badge → h1 → lead → CTAs a ancho completo, con respiración proporcional. */
+@media (max-width: 700px) {
+  .hero-logo { display: none; }
+}
 @media (max-width: 560px) {
   .hero-inner { padding-block-end: clamp(2.25rem, 8vh, 3.5rem); }
-  .hero .open-badge { margin-bottom: .85rem; }
-  .hero-logo { padding: .7rem 1.05rem; margin-block: 0 1.1rem; border-radius: var(--r-md); }
-  .hero-logo img { height: 64px; }
+  .hero .open-badge { margin-bottom: 1rem; }
   .hero h1 { margin-block-end: .9rem; }
   .hero .lead { margin-block-end: 1.5rem; }
   .hero-actions { flex-direction: column; align-items: stretch; gap: .75rem; margin-block-start: 0; }

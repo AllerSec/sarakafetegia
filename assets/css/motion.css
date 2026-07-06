@@ -9,10 +9,9 @@
    GSAP solo orquesta la salida (cortina hacia arriba) desde boot.js. */
 .loader {
   position: fixed; inset: 0; z-index: var(--z-loader);
-  /* Velo ligeramente translúcido: el navegador sigue pintando la página
-     debajo (el LCP del hero no queda retenido por el loader). Visualmente
-     sigue leyéndose como espresso sólido. */
-  background: color-mix(in oklch, var(--espresso-deep) 88%, transparent);
+  /* Opaco: con velo translúcido se veía la página a medio pintar detrás
+     (especialmente feo en móvil). El loader dura ~1,5s; LCP no es crítico. */
+  background: var(--espresso-deep);
   display: grid; place-items: center;
   /* red de seguridad: aunque todo JS falle, el loader se aparta solo */
   animation: loaderAutoOut .5s var(--ease-out) 4s forwards;
