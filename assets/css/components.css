@@ -80,10 +80,10 @@
   color: var(--on-dark); letter-spacing: -.02em; line-height: 1; white-space: nowrap;
 }
 @media (max-width: 860px) {
-  .nav-logo-mark { height: 44px; }
-  .nav-logo-name { font-size: 1.05rem; }
+  .nav-logo-mark { height: 60px; }
+  .nav-logo-name { font-size: 1.1rem; }
 }
-@media (max-width: 420px) { .nav-logo-name { font-size: .96rem; } .nav-logo-mark { height: 40px; } }
+@media (max-width: 420px) { .nav-logo-name { font-size: 1rem; } .nav-logo-mark { height: 54px; } }
 /* over-hero state: text white; once scrolled, stays white on espresso bg */
 .nav-links { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); list-style: none; }
 .nav-link {
