@@ -1,5 +1,5 @@
 /* ============================================================
-   Sara Kafetegia — main.js
+   Sara Kafetegia - main.js
    Vanilla JS + GSAP. Progressive enhancement: every feature works
    (or degrades) without JS; reduced-motion fully respected.
    ============================================================ */
@@ -52,6 +52,19 @@
     window.addEventListener('resize', onScroll, { passive: true });
   }
 
+  /* ---------------- Focus trap reutilizable (WCAG 2.2: no keyboard trap out) ---------------- */
+  const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  const trapTabIn = (container) => {
+    container.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const els = $$(FOCUSABLE, container).filter(el => el.getClientRects().length > 0);
+      if (!els.length) return;
+      const first = els[0], last = els[els.length - 1];
+      if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  };
+
   /* ---------------- Mobile menu ---------------- */
   const toggle = $('.nav-toggle');
   const mobileMenu = $('.mobile-menu');
@@ -62,7 +75,9 @@
       toggle.setAttribute('aria-expanded', String(open));
       doc.body.style.overflow = open ? 'hidden' : '';
       if (open) { const f = $('a', mobileMenu); f && f.focus(); }
+      else if (mobileMenu.contains(doc.activeElement)) toggle.focus();
     };
+    trapTabIn(mobileMenu);
     toggle.addEventListener('click', () => openMenu(mobileMenu.getAttribute('data-open') !== 'true'));
     close && close.addEventListener('click', () => openMenu(false));
     $$('a', mobileMenu).forEach(a => a.addEventListener('click', () => openMenu(false)));
@@ -150,13 +165,17 @@
     const lbClose = $('button', lightbox);
     // UI extra construida aquí para no tocar el markup base de cada página
     const SVG_NS = 'http://www.w3.org/2000/svg';
+    // La ruta del sprite se toma de un icono ya presente en la página, para
+    // respetar rutas relativas (raíz) y absolutas (/en/, /eu/, /fr/) por igual.
+    const anyUse = $('use[href*="sprite.svg"]');
+    const spriteBase = anyUse ? anyUse.getAttribute('href').split('#')[0] : 'assets/icons/sprite.svg';
     const mkNav = (cls, label) => {
       const b = doc.createElement('button');
       b.className = 'lb-nav ' + cls; b.setAttribute('aria-label', label);
       const svg = doc.createElementNS(SVG_NS, 'svg');
       svg.setAttribute('aria-hidden', 'true');
       const use = doc.createElementNS(SVG_NS, 'use');
-      use.setAttribute('href', '/assets/icons/sprite.svg#i-chevron');
+      use.setAttribute('href', spriteBase + '#i-chevron');
       svg.appendChild(use); b.appendChild(svg);
       lightbox.appendChild(b); return b;
     };
@@ -182,8 +201,13 @@
       lbCount.textContent = (idx + 1) + ' / ' + items.length;
       preload(idx + 1); preload(idx - 1);
     };
-    const open = (i) => { show(i); lightbox.setAttribute('data-open', 'true'); lbClose.focus(); doc.body.style.overflow = 'hidden'; };
-    const close = () => { lightbox.setAttribute('data-open', 'false'); doc.body.style.overflow = ''; };
+    let lastFocus = null;
+    const open = (i) => { lastFocus = doc.activeElement; show(i); lightbox.setAttribute('data-open', 'true'); lbClose.focus(); doc.body.style.overflow = 'hidden'; };
+    const close = () => {
+      lightbox.setAttribute('data-open', 'false'); doc.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    };
+    trapTabIn(lightbox);
 
     figures.forEach((fig, i) => {
       fig.setAttribute('tabindex', '0'); fig.setAttribute('role', 'button');
@@ -222,23 +246,33 @@
 
     const mm = gsap.matchMedia();
 
-    /* Reveal-on-scroll: per-element, fitted. Mark .pre then animate. */
-    const reveals = $$('[data-reveal]');
-    reveals.forEach(el => el.classList.add('pre'));
-    onIdle(() => {
-      reveals.forEach(el => {
-        const stagger = el.dataset.reveal === 'stagger';
-        const targets = stagger ? Array.from(el.children) : [el];
-        if (stagger) { Array.from(el.children).forEach(c => c.classList.add('pre')); el.classList.remove('pre'); }
-        gsap.to(targets, {
-          autoAlpha: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          stagger: stagger ? 0.06 : 0,
-          scrollTrigger: { trigger: el, start: 'top 85%', once: true,
-            onEnter: () => { targets.forEach(t => t.classList.remove('pre')); } }
+    /* Reveal-on-scroll: per-element, fitted. Mark .pre then animate.
+       Solo se prepara con la pestaña visible: en pestañas en segundo plano el
+       rAF está congelado y el contenido quedaría oculto hasta el ScrollTrigger. */
+    const setupReveals = () => {
+      const reveals = $$('[data-reveal]');
+      reveals.forEach(el => el.classList.add('pre'));
+      onIdle(() => {
+        reveals.forEach(el => {
+          const stagger = el.dataset.reveal === 'stagger';
+          const targets = stagger ? Array.from(el.children) : [el];
+          if (stagger) { Array.from(el.children).forEach(c => c.classList.add('pre')); el.classList.remove('pre'); }
+          gsap.to(targets, {
+            autoAlpha: 1, y: 0, duration: 0.7, ease: 'power3.out',
+            stagger: stagger ? 0.06 : 0,
+            scrollTrigger: { trigger: el, start: 'top 85%', once: true,
+              onEnter: () => { targets.forEach(t => t.classList.remove('pre')); } }
+          });
         });
+        if (window.ScrollTrigger) window.ScrollTrigger.refresh();
       });
-      if (window.ScrollTrigger) window.ScrollTrigger.refresh();
-    });
+    };
+    if (doc.hidden) {
+      const onVisible = () => { if (!doc.hidden) { doc.removeEventListener('visibilitychange', onVisible); setupReveals(); } };
+      doc.addEventListener('visibilitychange', onVisible);
+    } else {
+      setupReveals();
+    }
 
     /* Hero parallax + cursor warmth (desktop pointer only) */
     mm.add('(min-width: 880px) and (pointer: fine)', () => {
@@ -304,7 +338,7 @@
           const my = e.clientY - (r.top + r.height / 2);
           gsap.to(btn, { x: mx * 0.28, y: my * 0.32, duration: 0.5, ease: 'power3.out' });
         };
-        const reset = () => gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,0.6)' });
+        const reset = () => gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'expo.out' });
         btn.addEventListener('pointermove', move);
         btn.addEventListener('pointerleave', reset);
         handlers.push([btn, move, reset]);

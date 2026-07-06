@@ -1,5 +1,5 @@
 /* ============================================================
-   Sara Kafetegia — components.css
+   Sara Kafetegia · components.css
    Buttons · nav · hero · cards · menu · gallery · forms · footer
    ============================================================ */
 
@@ -84,10 +84,6 @@
   .nav-logo-name { font-size: 1.05rem; }
 }
 @media (max-width: 420px) { .nav-logo-name { font-size: .96rem; } .nav-logo-mark { height: 40px; } }
-.nav-logo-text {
-  font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
-  color: var(--on-dark); letter-spacing: -.01em; line-height: 1;
-}
 /* over-hero state: text white; once scrolled, stays white on espresso bg */
 .nav-links { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); list-style: none; }
 .nav-link {
@@ -127,7 +123,14 @@
   font-family: var(--font-display); font-size: var(--step-2); font-weight: 600;
   color: var(--on-dark); opacity: 0; transform: translateY(18px);
 }
-.mobile-menu[data-open="true"] a { animation: menuIn var(--dur-3) var(--ease-out) forwards; }
+.mobile-menu[data-open="true"] a { animation: menuIn var(--dur-3) var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 55ms); }
+/* Stagger: cada enlace entra 55ms después del anterior (reveal escalonado) */
+.mobile-menu nav > a:nth-child(1) { --i: 1; }
+.mobile-menu nav > a:nth-child(2) { --i: 2; }
+.mobile-menu nav > a:nth-child(3) { --i: 3; }
+.mobile-menu nav > a:nth-child(4) { --i: 4; }
+.mobile-menu nav > a:nth-child(5) { --i: 5; }
+.mobile-menu .lang-switch a { --i: 6; }
 .mobile-menu .menu-close {
   position: absolute; top: 1.25rem; right: 1.25rem; width: 48px; height: 48px;
   color: var(--on-dark);
@@ -142,7 +145,7 @@
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 100svh; display: grid; align-items: end; overflow: clip; isolation: isolate; }
-/* Compact page hero (interior pages — not full 100vh) */
+/* Compact page hero (interior pages · not full 100vh) */
 .hero.hero-compact { min-height: 56svh; }
 .hero.hero-compact .hero-inner { padding-block: clamp(5rem, 14vh, 8rem) clamp(2rem, 6vh, 4rem); }
 .hero.hero-compact h1 { font-size: var(--step-4); max-width: 20ch; }
@@ -166,7 +169,7 @@
     background: linear-gradient(180deg, transparent 0%, rgba(20,11,7,.55) 18%, rgba(18,10,6,.88) 42%, rgba(16,9,5,.94) 100%);
   }
 }
-/* Logo grande del negocio en el hero — medallón claro para que el texto del logo se lea sobre la foto oscura */
+/* Logo grande del negocio en el hero · medallón claro para que el texto del logo se lea sobre la foto oscura */
 .hero-logo { display: block; width: fit-content; margin-block: 1rem .5rem; padding: 1rem 1.6rem;
   background: color-mix(in oklch, var(--crema) 92%, white); border-radius: var(--r-lg);
   box-shadow: var(--shadow-lg); }
@@ -175,6 +178,12 @@
 .hero h1 { color: var(--on-dark); font-size: var(--step-5); max-width: 16ch; }
 .hero .lead { color: var(--on-dark-muted); max-width: 46ch; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-block-start: 2rem; }
+.hero-actions--center { justify-content: center; }
+.lead--center { margin-inline: auto; }
+.section-dark .lead { color: var(--on-dark-muted); }
+.section-flush-top { padding-block: 2rem 0; }
+.section-cta-row { margin-top: 2.5rem; }
+.mobile-menu nav .btn { margin-top: 1rem; }
 /* Móvil: el medallón del logo competía en tamaño con el titular y todo el bloque
    (badge → logo → h1 → lead → CTA) quedaba apretado sin ritmo. Se reduce el logo,
    se da respiración proporcional entre bloques y las CTAs pasan a ancho completo
@@ -189,14 +198,6 @@
   .hero-actions { flex-direction: column; align-items: stretch; gap: .75rem; margin-block-start: 0; }
   .hero-actions .btn { width: 100%; }
 }
-.hero-scroll {
-  position: absolute; left: 50%; bottom: 1.4rem; transform: translateX(-50%); z-index: 2;
-  color: var(--on-dark-muted); display: grid; place-items: center; gap: .4rem;
-  font-family: var(--font-display); font-size: .8rem; letter-spacing: .06em;
-}
-.hero-scroll .drop { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); animation: drop 1.8s var(--ease-out) infinite; }
-@keyframes drop { 0% { transform: translateY(-6px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(14px); opacity: 0; } }
-
 .open-badge {
   display: inline-flex; align-items: center; gap: .5rem; font-family: var(--font-display);
   font-size: var(--step--1); font-weight: 600; padding: .4rem .85rem; border-radius: var(--r-pill);
@@ -265,7 +266,10 @@
 .filter-btn {
   font-family: var(--font-display); font-weight: 600; font-size: .95rem;
   padding: .6rem 1.1rem; border-radius: var(--r-pill); border: 1.5px solid var(--line);
-  color: var(--ink-muted); transition: all var(--dur-2) var(--ease-out); min-height: 44px;
+  color: var(--ink-muted); min-height: 44px;
+  transition: color var(--dur-2) var(--ease-out),
+              background-color var(--dur-2) var(--ease-out),
+              border-color var(--dur-2) var(--ease-out);
 }
 .filter-btn:hover { border-color: var(--espresso-soft); color: var(--espresso-ink); }
 .filter-btn[aria-pressed="true"] { background: var(--espresso); color: var(--on-dark); border-color: var(--espresso); }
@@ -276,7 +280,6 @@
 .gallery figure { position: relative; overflow: hidden; border-radius: var(--r-md); aspect-ratio: 1; margin: 0; cursor: zoom-in; }
 .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-4) var(--ease-out); }
 .gallery figure:hover img { transform: scale(1.06); }
-.gallery figure.tall { aspect-ratio: 1 / 1.4; }
 .gallery figure.wide { grid-column: span 2; aspect-ratio: 2 / 1; }
 @media (max-width: 700px) { .gallery figure.wide { grid-column: span 2; aspect-ratio: 2/1.1; } }
 
@@ -291,17 +294,9 @@
 }
 .step-num::before { content: counter(step, decimal-leading-zero); }
 
-/* ---------- Stats (count-up) ---------- */
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; text-align: center; }
-/* 4 stats → 4 columnas en desktop, 2×2 en tablet: sin fila huérfana */
-.stats.stats-4 { grid-template-columns: repeat(4, 1fr); }
-@media (max-width: 900px) { .stats.stats-4 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .stats { grid-template-columns: 1fr; } .stats.stats-4 { grid-template-columns: 1fr; } }
-.stat .num { font-family: var(--font-display); font-weight: 700; font-size: var(--step-3); color: var(--amber); line-height: 1; font-variant-numeric: tabular-nums; }
-.stat .label { color: var(--on-dark-muted); font-size: var(--step-0); margin-top: .35rem; }
-
 /* ---------- Quote ---------- */
 .quote { font-family: var(--font-body); font-style: italic; font-size: var(--step-2); line-height: 1.4; color: var(--espresso-ink); max-width: 22ch; }
+.center-text .quote { margin-inline: auto; }
 .section-dark .quote { color: var(--on-dark); }
 .quote-cite { font-family: var(--font-display); font-style: normal; font-size: var(--step-0); color: var(--ink-muted); margin-top: 1rem; display: block; }
 .section-dark .quote-cite { color: var(--on-dark-muted); }
@@ -363,27 +358,35 @@
 @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
 .footer-brand img { height: 64px; width: auto; margin-bottom: 1rem; }
-.footer-col h4 { color: var(--crema); font-size: var(--step-0); margin-bottom: 1rem; }
+.footer-brand .social-row { margin-top: 1rem; }
+.footer-col h3 { color: var(--crema); font-size: var(--step-0); margin-bottom: 1rem; letter-spacing: -0.01em; }
 .footer-col a, .footer-col p { color: var(--on-dark-muted); display: block; padding-block: .25rem; }
 .footer-col a:hover { color: var(--crema); }
 .footer-bottom { border-top: 1px solid var(--line-dark); padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; }
 .footer-bottom, .footer-bottom a { color: var(--on-dark-muted); font-size: .9rem; }
 .footer-bottom a { color: var(--crema); text-decoration: underline; text-underline-offset: 3px; }
 .social-row { display: flex; gap: .75rem; }
-.social-row a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-dark); color: var(--on-dark); transition: all var(--dur-2) var(--ease-out); }
+.social-row a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-dark); color: var(--on-dark);
+  transition: color var(--dur-2) var(--ease-out), background-color var(--dur-2) var(--ease-out),
+              border-color var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out); }
 .social-row a:hover { background: var(--amber); color: var(--espresso-deep); border-color: var(--amber); transform: translateY(-2px); }
 .social-row svg { width: 20px; height: 20px; }
 
 /* ---------- Lightbox ---------- */
 .lightbox { position: fixed; inset: 0; z-index: var(--z-modal); background: color-mix(in oklch, var(--espresso-deep) 92%, black); display: grid; place-items: center; padding: 5vw; opacity: 0; visibility: hidden; transition: opacity var(--dur-3) var(--ease-out), visibility var(--dur-3); overscroll-behavior: contain; }
 .lightbox[data-open="true"] { opacity: 1; visibility: visible; }
-.lightbox img { max-width: 100%; max-height: 86vh; border-radius: var(--r-md); box-shadow: var(--shadow-lg); }
+.lightbox img { width: auto; height: auto; max-width: 100%; max-height: 86vh; object-fit: contain; border-radius: var(--r-md); box-shadow: var(--shadow-lg); }
 .lightbox button { position: absolute; top: 1.25rem; right: 1.25rem; width: 48px; height: 48px; color: var(--on-dark); border: 1px solid var(--line-dark); border-radius: 50%; display: grid; place-items: center; }
 
 /* ---------- Breadcrumb ---------- */
 .breadcrumb { font-family: var(--font-display); font-size: .9rem; color: var(--ink-muted); display: flex; gap: .5rem; flex-wrap: wrap; }
 .breadcrumb a:hover { color: var(--honey-text); }
 .breadcrumb [aria-current] { color: var(--espresso-ink); }
+/* Breadcrumb sobre foto de hero: tonos claros */
+.hero .breadcrumb { color: var(--on-dark-muted); margin-bottom: .35rem; }
+.hero .breadcrumb a:hover { color: var(--crema); }
+.hero .breadcrumb [aria-current] { color: var(--crema); }
+.hero .breadcrumb + .open-badge { margin-top: .85rem; }
 
 /* ---------- Decorative coffee-ring divider ---------- */
 .ring-divider { display: grid; place-items: center; padding-block: 1rem; color: var(--amber-deep); opacity: .55; }
@@ -503,10 +506,6 @@
 .terraza-hero-copy .eyebrow { color: var(--amber); justify-content: center; }
 .terraza-hero-copy h2 { color: #fff; font-size: clamp(1.75rem, 4vw, 3rem); line-height: 1.1; margin-block: .75rem 1.25rem; }
 .terraza-hero-copy p { color: rgba(255,255,255,.85); font-size: 1.1rem; line-height: 1.65; margin-bottom: 1.75rem; max-width: 60ch; margin-inline: auto; }
-.terraza-hero-stats { display: flex; gap: 2.5rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; }
-.terraza-stat { text-align: center; color: #fff; }
-.terraza-stat strong { display: block; font-size: 1.75rem; font-weight: 700; color: var(--amber); line-height: 1; margin-bottom: .25rem; }
-.terraza-stat span { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; opacity: .75; }
 .terraza-hero-photos { display: none; }
 @media (max-width: 820px) { .terraza-hero-inner { padding-block: 3.5rem; } }
 
@@ -545,6 +544,7 @@
 .oferta-split--reverse .oferta-content { order: 1; }
 .oferta-media { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 3/4; box-shadow: var(--shadow-md); }
 .oferta-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.oferta-media:hover img { transform: scale(1.03); }
 .oferta-content { max-width: 38rem; }
 .oferta-content h3 { margin-block: .5rem 1rem; }
 .oferta-list { list-style: none; padding: 0; margin: 0 0 1.25rem; display: flex; flex-direction: column; gap: .6rem; }
@@ -560,7 +560,7 @@
 }
 
 /* ============================================================
-   Capa premium — glow, progreso, tilt 3D, action bar, lightbox v2
+   Capa premium · glow, progreso, tilt 3D, action bar, lightbox v2
    ============================================================ */
 
 /* ── Luz cálida que sigue al cursor en el hero (JS mueve x/y) ── */
@@ -611,7 +611,6 @@
 @media (max-width: 860px) {
   .action-bar { display: grid; }
   body:has(.action-bar) { padding-bottom: calc(66px + env(safe-area-inset-bottom)); }
-  body:has(.action-bar) .hero-scroll { display: none; }
 }
 
 /* ── Chip de valoración en Google ── */

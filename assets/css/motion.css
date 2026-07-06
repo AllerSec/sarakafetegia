@@ -1,24 +1,70 @@
 /* ============================================================
-   Sara Kafetegia — motion.css
+   Sara Kafetegia · motion.css
    Page loader · reveal defaults · page transitions · reduced-motion
    Reveals ENHANCE already-visible defaults (no content gated on JS).
    ============================================================ */
 
-/* ---------- First-visit page loader ---------- */
+/* ---------- First-visit page loader (logo real de la cafetería) ----------
+   Toda la animación de entrada es CSS puro: funciona igual con o sin GSAP.
+   GSAP solo orquesta la salida (cortina hacia arriba) desde boot.js. */
 .loader {
   position: fixed; inset: 0; z-index: var(--z-loader);
-  background: var(--espresso-deep); color: var(--on-dark);
-  display: grid; place-items: center; gap: 1rem;
+  /* Velo ligeramente translúcido: el navegador sigue pintando la página
+     debajo (el LCP del hero no queda retenido por el loader). Visualmente
+     sigue leyéndose como espresso sólido. */
+  background: color-mix(in oklch, var(--espresso-deep) 88%, transparent);
+  display: grid; place-items: center;
+  /* red de seguridad: aunque todo JS falle, el loader se aparta solo */
+  animation: loaderAutoOut .5s var(--ease-out) 4s forwards;
 }
 .loader[hidden] { display: none; }
-.loader-mark { width: clamp(120px, 28vw, 200px); height: auto; }
-.loader-mark path, .loader-mark circle, .loader-mark line {
-  stroke: var(--crema); stroke-width: 2; fill: none;
-  stroke-dasharray: var(--len, 1000); stroke-dashoffset: var(--len, 1000);
+/* Visitas repetidas: clase puesta por un script inline en <head> antes del
+   primer paint · sin flash del loader mientras carga el JS diferido. */
+.is-repeat .loader { display: none !important; }
+.loader-card {
+  position: relative;
+  background: color-mix(in oklch, var(--crema) 92%, white);
+  border-radius: var(--r-lg);
+  padding: clamp(1.4rem, 5vw, 2.2rem) clamp(1.6rem, 6vw, 2.6rem) clamp(1.2rem, 4vw, 1.9rem);
+  box-shadow: var(--shadow-lg);
+  animation: loaderCardIn .55s var(--ease-out) both;
 }
-.loader-steam { color: var(--amber); opacity: .85; }
-.loader-text { font-family: var(--font-display); letter-spacing: .25em; font-size: .8rem; text-transform: uppercase; color: var(--on-dark-muted); }
-/* curtain wipe handled by GSAP; fallback fade below */
+.loader-card img { width: clamp(150px, 38vw, 230px); height: auto; }
+.loader-steam {
+  position: absolute; left: 50%; top: 0; translate: -50% -120%;
+  width: clamp(34px, 8vw, 46px); color: var(--crema);
+  animation: loaderSteam 2.1s ease-out .45s infinite;
+  opacity: 0;
+}
+.loader-steam svg { width: 100%; height: auto; }
+.loader-bar {
+  display: block; height: 3px; margin-top: clamp(.9rem, 3vw, 1.3rem);
+  border-radius: var(--r-pill);
+  background: color-mix(in oklch, var(--espresso) 14%, transparent);
+  overflow: hidden; position: relative;
+}
+.loader-bar::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, var(--amber-deep), var(--amber));
+  border-radius: inherit;
+  transform-origin: left center; transform: scaleX(0);
+  animation: loaderFill .62s var(--ease-out-quart) .18s forwards;
+}
+/* Sin animar opacity: la tarjeta (contenido) se pinta desde el primer frame,
+   así el FCP no espera al final del fade. Entrada solo con scale + blur. */
+@keyframes loaderCardIn {
+  from { transform: scale(.94) translateY(10px); filter: blur(7px); }
+  to   { transform: scale(1) translateY(0);      filter: blur(0); }
+}
+@keyframes loaderSteam {
+  0%   { opacity: 0; transform: translateY(6px); }
+  25%  { opacity: .95; }
+  70%  { opacity: .35; }
+  100% { opacity: 0; transform: translateY(-12px); }
+}
+@keyframes loaderFill { to { transform: scaleX(1); } }
+@keyframes loaderAutoOut { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+/* salida cortina (la aplica boot.js); fallback fade si no hay GSAP */
 .loader.is-done { animation: loaderOut var(--dur-4) var(--ease-out) forwards; }
 @keyframes loaderOut { to { opacity: 0; visibility: hidden; } }
 
@@ -26,7 +72,7 @@
    Elements are fully visible. JS adds [data-reveal] only when GSAP is
    ready & motion allowed, then animates from the .pre state. If JS never
    runs, content shows normally. */
-[data-reveal] { will-change: transform, opacity; }
+.js-motion [data-reveal] { will-change: transform, opacity; }
 .js-motion [data-reveal].pre { opacity: 0; transform: translateY(28px); }
 .js-motion [data-reveal].pre.fade { transform: none; }
 
@@ -38,7 +84,7 @@
 }
 .page-transitioning .page-curtain { pointer-events: auto; }
 
-/* Hero text entrance — CSS-only (not JS-gated), so the LCP headline is always
+/* Hero text entrance · CSS-only (not JS-gated), so the LCP headline is always
    present and just animates in. Safe if JS fails. */
 @keyframes heroRise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 .hero-rise { animation: heroRise var(--dur-4) var(--ease-out) both; animation-delay: var(--rise-delay, 0s); }
@@ -56,7 +102,7 @@
   .js-motion [data-reveal].pre,
   .js-motion [data-reveal].pre.fade { opacity: 1 !important; transform: none !important; }
   .loader, .page-curtain { display: none !important; }
-  .hero-scroll .drop, .open-badge .dot { animation: none !important; }
+  .open-badge .dot { animation: none !important; }
   .menu-card:hover .menu-card-media img,
   .gallery figure:hover img { transform: none; }
   .scroll-progress, .hero-glow { display: none !important; }

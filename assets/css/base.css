@@ -1,5 +1,5 @@
 /* ============================================================
-   Sara Kafetegia — base.css
+   Sara Kafetegia · base.css
    Tokens · reset · typography · layout primitives
    Brand: deep espresso/oxblood + Edison amber. Warmth via brand
    + photos, NOT a cream near-white body. (see DESIGN.md)
@@ -9,16 +9,16 @@
 
 /* ---------- Design tokens ---------- */
 :root {
-  /* Brand core — espresso / oxblood (from logo) */
+  /* Brand core · espresso / oxblood (from logo) */
   --espresso:        oklch(0.30 0.072 35);
   --espresso-deep:   oklch(0.22 0.060 33);
   --espresso-ink:    oklch(0.26 0.066 34);
   --espresso-soft:   oklch(0.42 0.075 38);
 
-  /* Accent — Edison amber / honey / crema */
+  /* Accent · Edison amber / honey / crema */
   --amber:           oklch(0.74 0.135 66);
   --amber-deep:      oklch(0.64 0.140 55);   /* large elements, borders, icons */
-  --honey-text:      oklch(0.48 0.12 52);    /* amber-toned SMALL text — AA on light (6.5:1) */
+  --honey-text:      oklch(0.48 0.12 52);    /* amber-toned SMALL text · AA on light (6.5:1) */
   --crema:           oklch(0.88 0.060 78);
 
   /* Surfaces */

@@ -1,5 +1,5 @@
 /* ============================================================
-   Sara Kafetegia — boot.js  (loaded early, before main.js)
+   Sara Kafetegia - boot.js  (loaded early, before main.js)
    First-visit loader + prefetch + soft page transitions.
    Loader shows ONLY on first visit of the session.
    ============================================================ */
@@ -9,36 +9,38 @@
   const loader = document.querySelector('.loader');
   const FIRST_KEY = 'sara_visited';
 
-  /* ---------- Loader ---------- */
+  /* ---------- Loader (logo real; entrada 100% CSS, salida GSAP) ---------- */
   if (loader) {
     const seen = sessionStorage.getItem(FIRST_KEY);
     if (seen || prefersReduced) {
       loader.setAttribute('hidden', '');
     } else {
       document.documentElement.style.overflow = 'hidden';
+      let done = false;
       const finish = () => {
+        if (done) return;
+        done = true;
         document.documentElement.style.overflow = '';
-        loader.classList.add('is-done');
         sessionStorage.setItem(FIRST_KEY, '1');
-        setTimeout(() => loader.setAttribute('hidden', ''), 700);
-      };
-      const run = () => {
-        if (window.gsap) {
-          const tl = window.gsap.timeline({ onComplete: () => setTimeout(finish, 350) });
-          const strokes = loader.querySelectorAll('path, circle, line');
-          strokes.forEach(s => { const len = s.getTotalLength ? s.getTotalLength() : 600; s.style.setProperty('--len', len); s.style.strokeDasharray = len; s.style.strokeDashoffset = len; });
-          tl.to(strokes, { strokeDashoffset: 0, duration: 1.0, ease: 'power2.inOut', stagger: 0.05 })
-            .to(loader.querySelector('.loader-steam'), { autoAlpha: 1, y: -8, duration: 0.5 }, '-=0.3')
-            .to(loader.querySelector('.loader-text'), { autoAlpha: 1, duration: 0.4 }, '-=0.3');
+        const hardHide = () => loader.setAttribute('hidden', '');
+        if (window.gsap && !document.hidden) {
+          // cortina: el loader entero se levanta y descubre la página
+          window.gsap.to(loader, {
+            yPercent: -100, duration: 0.65, ease: 'expo.inOut',
+            onComplete: hardHide
+          });
+          const card = loader.querySelector('.loader-card');
+          if (card) window.gsap.to(card, { yPercent: 18, autoAlpha: 0.6, duration: 0.65, ease: 'expo.inOut' });
+          // si el rAF se congela (pestaña pasa a 2º plano a mitad), ocultar igualmente
+          setTimeout(hardHide, 1500);
         } else {
-          setTimeout(finish, 900);
+          // sin GSAP o pestaña en segundo plano: fundido CSS y fuera
+          loader.classList.add('is-done');
+          setTimeout(hardHide, 700);
         }
       };
-      // run after gsap ready (it's loaded defer); poll briefly
-      if (window.gsap) run(); else {
-        let tries = 0;
-        const iv = setInterval(() => { if (window.gsap || tries++ > 30) { clearInterval(iv); run(); } }, 50);
-      }
+      // La barra ámbar termina de llenarse a ~1.4s: salimos justo después.
+      setTimeout(finish, 1550);
       // hard safety: never trap the user
       setTimeout(finish, 3500);
     }
